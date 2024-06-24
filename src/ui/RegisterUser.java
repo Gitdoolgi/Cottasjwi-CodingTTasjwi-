@@ -21,13 +21,12 @@ public class RegisterUser extends JFrame {
   private JTextField phoneNumTextfield;
   private DefaultHeader defaultHeader;
 
-  private int registerStatus;
   private LoginForm loginForm;
 
   public RegisterUser(LoginForm loginForm) {
     this.loginForm = loginForm;
 
-    defaultHeader = new DefaultHeader("logout");
+    defaultHeader = new DefaultHeader("logout", this, loginForm);
     add(defaultHeader);
 
 

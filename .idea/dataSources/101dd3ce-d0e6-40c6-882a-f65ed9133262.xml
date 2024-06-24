@@ -1219,7 +1219,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="509" parent="1" name="tspoon">
-      <LastIntrospectionLocalTimestamp>2024-06-24.05:31:27</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-24.08:24:07</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <user id="510" parent="1" name="ttasjwi"/>
@@ -1251,350 +1251,418 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
-    <column id="518" parent="511" name="BOARD_NO">
+    <table id="518" parent="509" name="tspoon_member_copy">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_general_ci</CollationName>
+    </table>
+    <column id="519" parent="511" name="BOARD_NO">
       <AutoIncrement>8</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="519" parent="511" name="TITLE">
+    <column id="520" parent="511" name="TITLE">
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="520" parent="511" name="ARTICLE">
+    <column id="521" parent="511" name="ARTICLE">
       <DasType>varchar(2000)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="521" parent="511" name="BOARD_DATE">
+    <column id="522" parent="511" name="BOARD_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="522" parent="511" name="BOARD_YN">
+    <column id="523" parent="511" name="BOARD_YN">
       <DasType>tinyint(4)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="523" parent="511" name="TSPOON_NO">
+    <column id="524" parent="511" name="TSPOON_NO">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <foreign-key id="524" parent="511" name="BOARD_FK">
+    <foreign-key id="525" parent="511" name="BOARD_FK">
       <ColNames>TSPOON_NO</ColNames>
       <RefColNames>TSPOON_NO</RefColNames>
       <RefTableName>tspoon_member</RefTableName>
     </foreign-key>
-    <index id="525" parent="511" name="PRIMARY">
+    <index id="526" parent="511" name="PRIMARY">
       <ColNames>BOARD_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="526" parent="511" name="BOARD_FK">
+    <index id="527" parent="511" name="BOARD_FK">
       <ColNames>TSPOON_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="527" parent="511" name="PRIMARY">
+    <key id="528" parent="511" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="528" parent="512" name="CLASS_NO">
+    <column id="529" parent="512" name="CLASS_NO">
       <AutoIncrement>16</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="529" parent="512" name="CLASS_NAME">
+    <column id="530" parent="512" name="CLASS_NAME">
       <DasType>varchar(300)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="530" parent="512" name="GRADE">
+    <column id="531" parent="512" name="GRADE">
       <DasType>varchar(15)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="531" parent="512" name="TEACHER">
+    <column id="532" parent="512" name="TEACHER">
       <DasType>varchar(12)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="532" parent="512" name="CLASS_COUNT">
+    <column id="533" parent="512" name="CLASS_COUNT">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="533" parent="512" name="SUBJECT">
+    <column id="534" parent="512" name="SUBJECT">
       <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="534" parent="512" name="PRIMARY">
+    <index id="535" parent="512" name="PRIMARY">
       <ColNames>CLASS_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="535" parent="512" name="PRIMARY">
+    <key id="536" parent="512" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="536" parent="513" name="MILKTID">
+    <column id="537" parent="513" name="MILKTID">
       <DasType>varchar(8)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="537" parent="513" name="NAME">
+    <column id="538" parent="513" name="NAME">
       <DasType>varchar(15)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="538" parent="513" name="birthday">
+    <column id="539" parent="513" name="birthday">
       <DasType>date|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="539" parent="513" name="SCHOOL">
+    <column id="540" parent="513" name="SCHOOL">
       <DasType>varchar(15)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="540" parent="513" name="TSPOON_NO">
+    <column id="541" parent="513" name="TSPOON_NO">
       <DasType>int(11)|0s</DasType>
       <Position>5</Position>
     </column>
-    <foreign-key id="541" parent="513" name="MILK_MEMBER_FK">
+    <foreign-key id="542" parent="513" name="MILK_MEMBER_FK">
       <ColNames>TSPOON_NO</ColNames>
       <RefColNames>TSPOON_NO</RefColNames>
       <RefTableName>tspoon_member</RefTableName>
     </foreign-key>
-    <index id="542" parent="513" name="PRIMARY">
+    <index id="543" parent="513" name="PRIMARY">
       <ColNames>MILKTID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="543" parent="513" name="MILK_MEMBER_FK">
+    <index id="544" parent="513" name="MILK_MEMBER_FK">
       <ColNames>TSPOON_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="544" parent="513" name="PRIMARY">
+    <key id="545" parent="513" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="545" parent="514" name="MYCLASS_NO">
+    <column id="546" parent="514" name="MYCLASS_NO">
       <AutoIncrement>8</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="546" parent="514" name="MYCLASS_START_DATE">
+    <column id="547" parent="514" name="MYCLASS_START_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="547" parent="514" name="MYCLASS_END_DATE">
+    <column id="548" parent="514" name="MYCLASS_END_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="548" parent="514" name="COMPLETE">
+    <column id="549" parent="514" name="COMPLETE">
       <DasType>tinyint(4)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="549" parent="514" name="MYCLASS_YN">
+    <column id="550" parent="514" name="MYCLASS_YN">
       <DasType>tinyint(4)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="550" parent="514" name="CLASS_NO">
+    <column id="551" parent="514" name="CLASS_NO">
       <DasType>int(11)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="551" parent="514" name="MILKTID">
+    <column id="552" parent="514" name="MILKTID">
       <DasType>varchar(8)|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="552" parent="514" name="MYCLASS_FK_CLASS_LIST">
+    <foreign-key id="553" parent="514" name="MYCLASS_FK_CLASS_LIST">
       <ColNames>CLASS_NO</ColNames>
       <RefColNames>CLASS_NO</RefColNames>
       <RefTableName>class_list</RefTableName>
     </foreign-key>
-    <foreign-key id="553" parent="514" name="MYCLASS_FK_MILK_MEMBER">
+    <foreign-key id="554" parent="514" name="MYCLASS_FK_MILK_MEMBER">
       <ColNames>MILKTID</ColNames>
       <RefColNames>MILKTID</RefColNames>
       <RefTableName>milk_member</RefTableName>
     </foreign-key>
-    <index id="554" parent="514" name="PRIMARY">
+    <index id="555" parent="514" name="PRIMARY">
       <ColNames>MYCLASS_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="555" parent="514" name="MYCLASS_FK_CLASS_LIST">
+    <index id="556" parent="514" name="MYCLASS_FK_CLASS_LIST">
       <ColNames>CLASS_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="556" parent="514" name="MYCLASS_FK_MILK_MEMBER">
+    <index id="557" parent="514" name="MYCLASS_FK_MILK_MEMBER">
       <ColNames>MILKTID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="557" parent="514" name="PRIMARY">
+    <key id="558" parent="514" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="558" parent="515" name="LOG_NO">
+    <column id="559" parent="515" name="LOG_NO">
       <AutoIncrement>25</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="559" parent="515" name="PROGRESS">
+    <column id="560" parent="515" name="PROGRESS">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="560" parent="515" name="LOG_DATE">
+    <column id="561" parent="515" name="LOG_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="561" parent="515" name="MYCLASS_NO">
+    <column id="562" parent="515" name="MYCLASS_NO">
       <DasType>int(11)|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="562" parent="515" name="MYCLASS_LOG_FK">
+    <foreign-key id="563" parent="515" name="MYCLASS_LOG_FK">
       <ColNames>MYCLASS_NO</ColNames>
       <RefColNames>MYCLASS_NO</RefColNames>
       <RefTableName>myclass</RefTableName>
     </foreign-key>
-    <index id="563" parent="515" name="PRIMARY">
+    <index id="564" parent="515" name="PRIMARY">
       <ColNames>LOG_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="564" parent="515" name="MYCLASS_LOG_FK">
+    <index id="565" parent="515" name="MYCLASS_LOG_FK">
       <ColNames>MYCLASS_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="565" parent="515" name="PRIMARY">
+    <key id="566" parent="515" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="566" parent="516" name="REPLY_NO">
+    <column id="567" parent="516" name="REPLY_NO">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="567" parent="516" name="CONTENT">
+    <column id="568" parent="516" name="CONTENT">
       <DasType>varchar(600)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="568" parent="516" name="REPLY_DATE">
+    <column id="569" parent="516" name="REPLY_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="569" parent="516" name="REPLY_YN">
+    <column id="570" parent="516" name="REPLY_YN">
       <DasType>tinyint(4)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="570" parent="516" name="BOARD_NO">
+    <column id="571" parent="516" name="BOARD_NO">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="571" parent="516" name="TSPOON_NO">
+    <column id="572" parent="516" name="TSPOON_NO">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <foreign-key id="572" parent="516" name="REPLY_FK_BOARD">
+    <foreign-key id="573" parent="516" name="REPLY_FK_BOARD">
       <ColNames>BOARD_NO</ColNames>
       <RefColNames>BOARD_NO</RefColNames>
       <RefTableName>board</RefTableName>
     </foreign-key>
-    <foreign-key id="573" parent="516" name="REPLY_FK_TSPOONS">
+    <foreign-key id="574" parent="516" name="REPLY_FK_TSPOONS">
       <ColNames>TSPOON_NO</ColNames>
       <RefColNames>TSPOON_NO</RefColNames>
       <RefTableName>tspoon_member</RefTableName>
     </foreign-key>
-    <index id="574" parent="516" name="PRIMARY">
+    <index id="575" parent="516" name="PRIMARY">
       <ColNames>REPLY_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="575" parent="516" name="REPLY_FK_BOARD">
+    <index id="576" parent="516" name="REPLY_FK_BOARD">
       <ColNames>BOARD_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="576" parent="516" name="REPLY_FK_TSPOONS">
+    <index id="577" parent="516" name="REPLY_FK_TSPOONS">
       <ColNames>TSPOON_NO</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="577" parent="516" name="PRIMARY">
+    <key id="578" parent="516" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="578" parent="517" name="TSPOON_NO">
-      <AutoIncrement>7</AutoIncrement>
+    <column id="579" parent="517" name="TSPOON_NO">
+      <AutoIncrement>23</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="579" parent="517" name="ID">
+    <column id="580" parent="517" name="ID">
       <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="580" parent="517" name="PASSWORD">
+    <column id="581" parent="517" name="PASSWORD">
       <DasType>varchar(14)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="581" parent="517" name="NAME">
+    <column id="582" parent="517" name="NAME">
       <DasType>varchar(15)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="582" parent="517" name="PHONE_NUM">
+    <column id="583" parent="517" name="PHONE_NUM">
       <DasType>varchar(14)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="583" parent="517" name="ADDRESS">
+    <column id="584" parent="517" name="ADDRESS">
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="584" parent="517" name="JOIN_DATE">
+    <column id="585" parent="517" name="JOIN_DATE">
       <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <index id="585" parent="517" name="PRIMARY">
+    <index id="586" parent="517" name="PRIMARY">
       <ColNames>TSPOON_NO</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="586" parent="517" name="ID">
+    <index id="587" parent="517" name="ID">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="587" parent="517" name="PRIMARY">
+    <key id="588" parent="517" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="588" parent="517" name="ID">
+    <key id="589" parent="517" name="ID">
+      <UnderlyingIndexName>ID</UnderlyingIndexName>
+    </key>
+    <check id="590" parent="518" name="role">
+      <ColNames>role</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Predicate>`role` in (0,1)</Predicate>
+    </check>
+    <column id="591" parent="518" name="TSPOON_NO">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>int(11)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="592" parent="518" name="ID">
+      <DasType>varchar(10)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="593" parent="518" name="PASSWORD">
+      <DasType>varchar(14)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="594" parent="518" name="NAME">
+      <DasType>varchar(15)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="595" parent="518" name="PHONE_NUM">
+      <DasType>varchar(14)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="596" parent="518" name="ADDRESS">
+      <DasType>varchar(100)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="597" parent="518" name="JOIN_DATE">
+      <DasType>date|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="598" parent="518" name="role">
+      <DasType>tinyint(4)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <index id="599" parent="518" name="PRIMARY">
+      <ColNames>TSPOON_NO</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="600" parent="518" name="ID">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="601" parent="518" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="602" parent="518" name="ID">
       <UnderlyingIndexName>ID</UnderlyingIndexName>
     </key>
   </database-model>

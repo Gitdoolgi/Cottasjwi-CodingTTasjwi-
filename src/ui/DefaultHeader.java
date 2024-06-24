@@ -1,18 +1,26 @@
 package ui;
 
+import event.HeaderEvent;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 
 public class DefaultHeader extends JPanel {
   private String status;
+  private Object currentObj;
+  private Object previousUiobj;
 
   /**
    * @param status (login | logout);
    *               <p>
    *               logout일 때 로그아웃과 회원이름이 보이지 않는다.
    */
-  public DefaultHeader(String status) {
+  public DefaultHeader(String status, Object currentObj, Object previousUiobj) {
     this.status = status;
+    this.currentObj = currentObj;
+    this.previousUiobj = previousUiobj;
+
     setBounds(0, 0, 400, 65);
     setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(null);
@@ -22,6 +30,7 @@ public class DefaultHeader extends JPanel {
     Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
     backImageBtn.setIcon(new ImageIcon(resizeBackImage));
     backImageBtn.setBounds(25, 65 / 2 - 10, 25, 20);
+    backImageBtn.addMouseListener(new HeaderEvent(currentObj, previousUiobj));
     add(backImageBtn);
 
     JLabel centerLabel = new JLabel("TSPOON");

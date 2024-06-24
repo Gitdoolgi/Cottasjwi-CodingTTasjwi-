@@ -9,6 +9,7 @@ public class ReceiveMember {
   private String phoneNum;
   private String address;
   private Date joinDate;
+  private String milktId;
 
   public ReceiveMember(int tspoon_no, String id, String name, String phoneNum, String address, Date joinDate) {
     this.tspoon_no = tspoon_no;
@@ -41,5 +42,13 @@ public class ReceiveMember {
 
   public Date getJoinDate() {
     return joinDate;
+  }
+
+  public void setMilktId(String milktId) {
+    this.milktId = milktId;
+  }
+
+  public String getMilktId() {
+    return milktId;
   }
 }
