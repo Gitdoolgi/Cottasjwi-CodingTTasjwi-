@@ -20,14 +20,14 @@ public class BoardRepository {
     try {
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, title);
-      rs = pstmt.executeQuery(sql);
+      rs = pstmt.executeQuery();
 
       rsmd = rs.getMetaData();
       DefaultTableModel dtm = new DefaultTableModel();
       while (rs.next()) {
+        System.out.println(rs.getInt("BOARD_NO"));
         dtm.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE"),});
       }
-
     } catch (SQLException se) {
       se.printStackTrace();
     }

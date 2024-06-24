@@ -54,7 +54,10 @@ public class MainForm extends JFrame {
 
     cp.add(boardButton); //게시판 버튼
     boardButton.setBounds(40, 400, 150, 50);
-    boardButton.addActionListener(e -> JOptionPane.showMessageDialog(null, boardButton.getText()));
+    boardButton.addActionListener(e -> {
+      setVisible(false);
+      new Board();
+    });
 
     cp.add(classButton); //학습현황 버튼
     classButton.setBounds(200, 400, 150, 50);

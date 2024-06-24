@@ -1,6 +1,7 @@
 package ui;
 
 import domain.ReceiveMember;
+import event.LoginEvent;
 import repository.MemberRepository;
 
 import javax.swing.*;
@@ -95,7 +96,7 @@ public class LoginForm extends JFrame {
 
     cp.add(idField);
     idField.setBounds(160, 285, 160, 30);
-    idField.addKeyListener(enterKeyListener());
+    idField.addKeyListener(new LoginEvent(loginButton));
 
     cp.add(pwdLabel);
     pwdLabel.setBounds(80, 330, 70, 30);

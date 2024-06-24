@@ -1,6 +1,7 @@
 package ui;
 
 import domain.BoardRepository;
+import event.BoardEvent;
 
 import java.awt.EventQueue;
 
@@ -35,21 +36,6 @@ public class Board extends JFrame implements ActionListener {
   private String colNames[] = {"글번호", "제목", "글내용", "글쓴이", "작성일"};
   private DefaultTableModel model = new DefaultTableModel(colNames, 0);
 
-
-  public static void main(String[] args) {
-    EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        try {
-          Board frame = new Board();
-          frame.setVisible(true);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    });
-    new Board();
-  }
-
   public Board() {
 
     boardRepository = new BoardRepository();
@@ -66,32 +52,11 @@ public class Board extends JFrame implements ActionListener {
     textSearch.setBounds(30, 52, 208, 27);
     contentPane.add(textSearch);
     textSearch.setColumns(10);
-    textSearch.addKeyListener(new KeyListener() {
-      @Override
-      public void keyTyped(KeyEvent e) {
-      }
-
-      @Override
-      public void keyReleased(KeyEvent e) {
-      }
-
-      @Override
-      public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_ENTER) {
-          String title = textSearch.getText();
-          boardRepository.selectArticle(title);
-        }
-      }
-    });
+    textSearch.addKeyListener(new BoardEvent(textSearch));
 
 
     JButton btnNewButton = new JButton("글쓰기");
-    btnNewButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-      }
-    });
+  
     btnNewButton.setBounds(250, 52, 109, 27);
     contentPane.add(btnNewButton);
 
@@ -101,16 +66,18 @@ public class Board extends JFrame implements ActionListener {
     table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     table.setBounds(30, 108, 327, 534);
     model.addRow(colNames);
-    //table.setE(false);
     contentPane.add(table);
 
-    select();
 
+    setUI();
   }
 
-  void select() {
-    // 글제목, 내용, id, 작성일
-    
+  private void setUI() {
+    setResizable(false);
+    setSize(400, 710);
+    setLocationRelativeTo(null);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setVisible(true);
   }
 
   @Override

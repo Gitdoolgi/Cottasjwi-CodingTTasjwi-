@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/repository/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/ReceiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/ReceiveMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Study.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Study.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/Status.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/StatusUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/LoginEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +63,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -109,7 +105,8 @@
       <workItem from="1719186636518" duration="144000" />
       <workItem from="1719186788336" duration="104000" />
       <workItem from="1719186913243" duration="15406000" />
-      <workItem from="1719209041486" duration="12272000" />
+      <workItem from="1719209041486" duration="12631000" />
+      <workItem from="1719224067334" duration="989000" />
     </task>
     <servers />
   </component>
