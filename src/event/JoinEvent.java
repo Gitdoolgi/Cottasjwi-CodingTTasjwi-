@@ -43,10 +43,6 @@ public class JoinEvent implements ActionListener {
     int result = memberRepository.insertMember(new Member(idValue, passwordValue, nameValue, phoneNumValue, addressValue));
     if (result == 0) {
       JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "Message", JOptionPane.ERROR_MESSAGE);
-
-      int lastNo = memberRepository.getLastAutoincrement();
-      memberRepository.resetAutoincrement(lastNo);
-
       return;
     }
     System.out.println("회원가입 성공");

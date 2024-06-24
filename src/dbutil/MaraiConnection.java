@@ -8,9 +8,9 @@ public class MaraiConnection {
 
   private static MaraiConnection instance;
   private Connection con;
-  private String url = "jdbc:mariadb://localhost:3307/test";
-  private String username = "scott";
-  private String password = "tiger";
+  private String url = "jdbc:mariadb://localhost:3306/tspoon";
+  private String username = "ttasjwi";
+  private String password = "ttasjwi";
 
   private MaraiConnection(){
     try {
