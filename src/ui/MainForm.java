@@ -1,6 +1,7 @@
 package ui;
 
 import domain.ReceiveMember;
+import event.MemberUpdateEvent;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -47,6 +48,9 @@ public class MainForm extends JFrame {
 
     cp.add(nameButton); //로그인한 사람 이름, 버튼으로 바꿔야할 것 같음
     nameButton.setBounds(320, 0, 80, 30);
+    nameButton.addActionListener(e -> {
+      new MemberInfo().init();
+    });
 
     cp.add(boardButton); //게시판 버튼
     boardButton.setBounds(40, 400, 150, 50);

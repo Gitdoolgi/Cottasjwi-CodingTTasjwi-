@@ -3,7 +3,7 @@ package event;
 import domain.Member;
 import repository.MemberRepository;
 import ui.LoginForm;
-import ui.RegisterUserUI;
+import ui.RegisterUser;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,12 +14,15 @@ public class RegisterEvent implements ActionListener {
 
   private List<JTextField> textFieldList;
   private MemberRepository memberRepository;
-  private RegisterUserUI registerUserUI;
+  private RegisterUser registerUser;
 
-  public RegisterEvent(List<JTextField> textFieldList, RegisterUserUI registerUserUI) {
+  private LoginForm loginForm;
+
+  public RegisterEvent(List<JTextField> textFieldList, RegisterUser registerUser, LoginForm loginForm) {
     this.textFieldList = textFieldList;
     this.memberRepository = new MemberRepository();
-    this.registerUserUI = registerUserUI;
+    this.registerUser = registerUser;
+    this.loginForm = loginForm;
   }
 
   @Override
@@ -40,8 +43,8 @@ public class RegisterEvent implements ActionListener {
     }
 
     // 성공했을 때
-    new LoginForm().setVisible(true);
-    registerUserUI.setVisible(false);
+    loginForm.setVisible(true);
+    registerUser.setVisible(false);
 
     if (!passwordValue.equals(passwordCheckValue)) {
       JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "Message", JOptionPane.ERROR_MESSAGE);

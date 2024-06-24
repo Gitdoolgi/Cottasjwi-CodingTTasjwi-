@@ -1,7 +1,6 @@
 package ui;
 
 import domain.ReceiveMember;
-import event.RegisterEvent;
 import repository.MemberRepository;
 
 import javax.swing.*;
@@ -112,10 +111,10 @@ public class LoginForm extends JFrame {
     cp.add(registerButton);
     registerButton.setBounds(205, 375, 115, 30);
     registerButton.addActionListener(e -> {
-      new RegisterUserUI();
+      new RegisterUser(this);
       setVisible(false);
     });
-    
+
     setUI();
   }
 

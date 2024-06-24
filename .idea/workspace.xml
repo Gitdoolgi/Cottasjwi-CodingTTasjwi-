@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/MemberInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/MemberUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbutil/MaraiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbutil/MaraiConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/JoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/LoginEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/JoinUserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUserUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/RegisterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/font/Jalnan2TTF.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Editor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Myuser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegisterUserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +110,7 @@
       <workItem from="1719186636518" duration="144000" />
       <workItem from="1719186788336" duration="104000" />
       <workItem from="1719186913243" duration="15406000" />
-      <workItem from="1719209041486" duration="3739000" />
+      <workItem from="1719209041486" duration="6432000" />
     </task>
     <servers />
   </component>
