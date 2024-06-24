@@ -1,7 +1,7 @@
 package ui;
 
 
-import event.JoinEvent;
+import event.RegisterEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JoinUserUI extends JFrame {
+public class RegisterUserUI extends JFrame {
   private List<JTextField> textFieldList;
   private JTextField idTextFiedl;
   private JTextField passwordTextField;
@@ -21,11 +21,13 @@ public class JoinUserUI extends JFrame {
   private JTextField phoneNumTextfield;
   private DefaultHeader defaultHeader;
 
-  public JoinUserUI() {
-    defaultHeader = new DefaultHeader();
+  private int registerStatus;
+
+  public RegisterUserUI() {
+    defaultHeader = new DefaultHeader("logout");
     add(defaultHeader);
 
-    setLayout(null);
+
     // 로고 패널
     JPanel logoPanel = new JPanel();
     logoPanel.setBounds(45, 62, 300, 175);
@@ -41,6 +43,7 @@ public class JoinUserUI extends JFrame {
     joinPanel.setBounds(20, 235, 400, 404);
     joinPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
     joinPanel.setLayout(null);
+    joinPanel.setBackground(new Color(192, 220, 233));
     add(joinPanel);
 
     // 아이디 라벨, 텍스트필드
@@ -122,7 +125,7 @@ public class JoinUserUI extends JFrame {
     textFieldList.add(phoneNumTextfield);
     textFieldList.add(addressTextField);
 
-    joinBtn.addActionListener(new JoinEvent(textFieldList));
+    joinBtn.addActionListener(new RegisterEvent(textFieldList, this));
     for (JTextField jtf : textFieldList) {
       jtf.addKeyListener(new KeyAdapter() {
         @Override
@@ -133,39 +136,15 @@ public class JoinUserUI extends JFrame {
         }
       });
     }
-
+    setVisible(false);
     setUI();
   }
 
-  private void showHeader() {
-    JPanel headerPanel;
-    headerPanel = new JPanel();
-    headerPanel.setBounds(0, 0, 400, 65);
-    headerPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-    add(headerPanel);
-    headerPanel.setLayout(null);
-
-    JLabel backImageBtn = new JLabel();
-    Image originalBackImage = new ImageIcon("D:\\suwan\\java\\swing\\images\\뒤로가기.png.png").getImage();
-    Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-    backImageBtn.setIcon(new ImageIcon(resizeBackImage));
-    backImageBtn.setBounds(25, 65 / 2 - 10, 25, 20);
-    headerPanel.add(backImageBtn);
-
-    JLabel centerLabel = new JLabel("TSPOON");
-    centerLabel.setBounds(200 - 55 / 2, 65 / 2 - 10, 55, 20);
-    headerPanel.add(centerLabel);
-
-    JLabel userLabel = new JLabel("이수완");
-    userLabel.setBounds(280, 65 / 2 - 10, 45, 20);
-    headerPanel.add(userLabel);
-
-    JLabel logoutLabel = new JLabel("로그아웃");
-    logoutLabel.setBounds(327, 65 / 2 - 10, 55, 20);
-    headerPanel.add(logoutLabel);
-  }
 
   private void setUI() {
+    setLayout(new BorderLayout());
+    getContentPane().setBackground(new Color(192, 220, 233));
+    setLocationRelativeTo(null);
     setVisible(true);
     setSize(400, 710);
     setDefaultCloseOperation(EXIT_ON_CLOSE);

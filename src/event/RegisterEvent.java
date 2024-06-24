@@ -2,20 +2,24 @@ package event;
 
 import domain.Member;
 import repository.MemberRepository;
+import ui.LoginForm;
+import ui.RegisterUserUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class JoinEvent implements ActionListener {
+public class RegisterEvent implements ActionListener {
 
   private List<JTextField> textFieldList;
   private MemberRepository memberRepository;
+  private RegisterUserUI registerUserUI;
 
-  public JoinEvent(List<JTextField> textFieldList) {
+  public RegisterEvent(List<JTextField> textFieldList, RegisterUserUI registerUserUI) {
     this.textFieldList = textFieldList;
     this.memberRepository = new MemberRepository();
+    this.registerUserUI = registerUserUI;
   }
 
   @Override
@@ -35,17 +39,21 @@ public class JoinEvent implements ActionListener {
       }
     }
 
+    // 성공했을 때
+    new LoginForm().setVisible(true);
+    registerUserUI.setVisible(false);
+
     if (!passwordValue.equals(passwordCheckValue)) {
       JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "Message", JOptionPane.ERROR_MESSAGE);
       return;
     }
 
-    int result = memberRepository.insertMember(new Member(idValue, passwordValue, nameValue, phoneNumValue, addressValue));
+    int result = memberRepository.insertMember(new Member(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null));
     if (result == 0) {
       JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "Message", JOptionPane.ERROR_MESSAGE);
       return;
     }
-    System.out.println("회원가입 성공");
+
   }
 
   public boolean isEmpty(String value) {

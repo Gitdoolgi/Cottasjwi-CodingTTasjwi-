@@ -1219,7 +1219,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="509" parent="1" name="tspoon">
-      <LastIntrospectionLocalTimestamp>2024-06-24.01:25:05</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-24.05:31:27</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <user id="510" parent="1" name="ttasjwi"/>
@@ -1252,7 +1252,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
     <column id="518" parent="511" name="BOARD_NO">
-      <AutoIncrement>2</AutoIncrement>
+      <AutoIncrement>8</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1277,13 +1277,13 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="523" parent="511" name="TOSPOON_NO">
+    <column id="523" parent="511" name="TSPOON_NO">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
     <foreign-key id="524" parent="511" name="BOARD_FK">
-      <ColNames>TOSPOON_NO</ColNames>
+      <ColNames>TSPOON_NO</ColNames>
       <RefColNames>TSPOON_NO</RefColNames>
       <RefTableName>tspoon_member</RefTableName>
     </foreign-key>
@@ -1293,7 +1293,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <Unique>1</Unique>
     </index>
     <index id="526" parent="511" name="BOARD_FK">
-      <ColNames>TOSPOON_NO</ColNames>
+      <ColNames>TSPOON_NO</ColNames>
       <Type>btree</Type>
     </index>
     <key id="527" parent="511" name="PRIMARY">
@@ -1385,7 +1385,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="545" parent="514" name="MYCLASS_NO">
-      <AutoIncrement>7</AutoIncrement>
+      <AutoIncrement>8</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1446,7 +1446,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="558" parent="515" name="LOG_NO">
-      <AutoIncrement>19</AutoIncrement>
+      <AutoIncrement>25</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1544,7 +1544,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="578" parent="517" name="TSPOON_NO">
-      <AutoIncrement>5</AutoIncrement>
+      <AutoIncrement>7</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

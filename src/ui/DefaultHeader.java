@@ -4,8 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DefaultHeader extends JPanel {
+  private String status;
 
-  public DefaultHeader() {
+  /**
+   * @param status (login | logout);
+   *               <p>
+   *               logout일 때 로그아웃과 회원이름이 보이지 않는다.
+   */
+  public DefaultHeader(String status) {
+    this.status = status;
     setBounds(0, 0, 400, 65);
     setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(null);
@@ -21,12 +28,14 @@ public class DefaultHeader extends JPanel {
     centerLabel.setBounds(200 - 55 / 2, 65 / 2 - 10, 55, 20);
     add(centerLabel);
 
-    JLabel userLabel = new JLabel("이수완");
-    userLabel.setBounds(280, 65 / 2 - 10, 45, 20);
-    add(userLabel);
+    if (!status.equals("logout")) {
+      JLabel userLabel = new JLabel("회원이름");
+      userLabel.setBounds(275, 65 / 2 - 10, 50, 20);
+      add(userLabel);
 
-    JLabel logoutLabel = new JLabel("로그아웃");
-    logoutLabel.setBounds(327, 65 / 2 - 10, 55, 20);
-    add(logoutLabel);
+      JLabel logoutLabel = new JLabel("로그아웃");
+      logoutLabel.setBounds(327, 65 / 2 - 10, 55, 20);
+      add(logoutLabel);
+    }
   }
 }

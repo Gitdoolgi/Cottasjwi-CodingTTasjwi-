@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-swing-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mariadb_java_client_3_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mariadb_java_client_3_4_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dbutil/MaraiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbutil/MaraiConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/JoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/JoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/JoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/LoginEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MemberUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/JoinUserUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/JoinUserUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUserUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +51,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
+    "Application.Runner.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
@@ -79,8 +77,8 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Runner" />
       <module name="java-swing-project" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -88,7 +86,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Runner" />
       </list>
     </recent_temporary>
   </component>
@@ -110,7 +108,8 @@
       <updated>1719186635503</updated>
       <workItem from="1719186636518" duration="144000" />
       <workItem from="1719186788336" duration="104000" />
-      <workItem from="1719186913243" duration="5105000" />
+      <workItem from="1719186913243" duration="15406000" />
+      <workItem from="1719209041486" duration="3739000" />
     </task>
     <servers />
   </component>
