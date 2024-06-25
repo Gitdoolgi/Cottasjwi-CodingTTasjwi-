@@ -1,5 +1,6 @@
 package ui;
 
+import domain.SelectMember;
 import domain.Study;
 import repository.StatusRepository;
 
@@ -21,16 +22,29 @@ public class StatusUI extends JFrame {
 
   private Color color = new Color(192, 220, 233);
   private StatusRepository StatusRepository;
+  private DefaultHeaderUI defaultHeader;
+  private MainFormUI mainForm;
+  private SelectMember member;
 
-  public StatusUI() {
+  public StatusUI(MainFormUI mainForm, SelectMember member) {
     this.StatusRepository = new StatusRepository();
+    this.mainForm = mainForm;
+    this.member = member;
     init();
   }
 
   void init() {
     cp = getContentPane();
     pane = new JTabbedPane();
-    p1 = new JPanel(new GridLayout(6, 2)); //전체 레이아웃
+    p1 = new JPanel(new GridLayout(6, 3)); //전체 레이아웃
+
+    JPanel jp = new JPanel();
+    jp.add(pane);
+    jp.add(p1);
+    add(jp);
+    // 헤더추가
+    defaultHeader = new DefaultHeaderUI("login", this, mainForm, member);
+    //cp.add(defaultHeader);
     pa = new JPanel();
     box1 = new JComboBox(sub);
     box2 = new JComboBox(desc);
@@ -69,7 +83,13 @@ public class StatusUI extends JFrame {
 
     p2 = new JPanel();
     pane.addTab("       수강 완료       ", p2);
-    cp.add(pane);
+    JPanel s = new JPanel();
+    s.setLayout(null);
+    pane.setBounds(0, 78, 385, 710);
+    s.add(defaultHeader);
+    s.add(pane);
+    cp.add(s);
+    //cp.add(pane);
 
     setUi();
   }

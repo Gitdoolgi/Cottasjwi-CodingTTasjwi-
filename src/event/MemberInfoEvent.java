@@ -16,12 +16,8 @@ public class MemberInfoEvent implements ActionListener {
   private Connection con = MariaConnection.getInstance().getConnection();
 
   private SelectMember member;
-  private MemberUpdateUI memberUpdate;
   private String jbName;
 
-  public MemberInfoEvent(MemberUpdateUI memberUpdate) {
-    this.memberUpdate = memberUpdate;
-  }
 
   public MemberInfoEvent(String jbName, SelectMember member) {
     this.jbName = jbName;
@@ -32,9 +28,9 @@ public class MemberInfoEvent implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     ResultSet rs;
     String sql1 = "SELECT COUNT(*) FROM MILK_MEMBER WHERE MILKTID = ?";
-    String sql2 = "UPDATE MILK_MEMBER SET TSPOON_NO = ? WHERE MILKTID = ?"; // 쿼리 틀림 =>
+    String sql2 = "UPDATE MILK_MEMBER SET TSPOON_NO = ? WHERE MILKTID = ?";
 
-    if (jbName.equals("b_Child_Reg")) {
+    if (jbName.equals("bChildUpdate")) {
       String userInput = JOptionPane.showInputDialog(null, "자녀의 ID를 입력해주세요", "자녀 추가", JOptionPane.PLAIN_MESSAGE);
       if (userInput != null) { //입력값이 있을 떄
         try (PreparedStatement pstmt1 = con.prepareStatement(sql1)) {
@@ -72,8 +68,8 @@ public class MemberInfoEvent implements ActionListener {
       } else { //입력값이 없을 때 or 창을 닫을 때
         JOptionPane.showMessageDialog(null, "자녀를 추가하지 않습니다");
       }
-    } else if (jbName.equals("b_User_Edit")) {
-      memberUpdate.init();
+    } else if (jbName.equals("bMemberUpdate")) {
+      new MemberUpdateUI(member).init();
     }
   }
 }

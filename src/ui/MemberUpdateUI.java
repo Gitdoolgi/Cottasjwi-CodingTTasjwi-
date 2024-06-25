@@ -1,6 +1,7 @@
 package ui;
 
-import event.MemberInfoEvent;
+import domain.SelectMember;
+import event.MemberUpdateEvent;
 
 import java.awt.*;
 import javax.swing.*;
@@ -8,10 +9,11 @@ import javax.swing.*;
 public class MemberUpdateUI extends JFrame {
   private Container cp2 = getContentPane();
   private JPanel p2;
-  private JButton b_PWD, b_User_Edit_Check;
+  private JButton bUpdateCheck;
   private JLabel label_Edit_Main, label_PWD, label_PN;
   private JPasswordField passwordField;
   private JTextField textField_PN;
+  private SelectMember member;
 
   Color c1 = new Color(139, 73, 39);//갈
   Color c13 = new Color(251, 172, 204);
@@ -20,7 +22,8 @@ public class MemberUpdateUI extends JFrame {
   Color c16 = new Color(219, 242, 201);//연연두
   Color c18 = new Color(204, 228, 251);//하늘
 
-  public MemberUpdateUI() {
+  public MemberUpdateUI(SelectMember member) {
+    this.member = member;
     init();
   }
 
@@ -83,11 +86,11 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 2;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    b_User_Edit_Check = new JButton("수정하기");
-    cp2.add(b_User_Edit_Check, gbc);
-    b_User_Edit_Check.setBackground(c16);
+    bUpdateCheck = new JButton("수정하기");
+    cp2.add(bUpdateCheck, gbc);
+    bUpdateCheck.setBackground(c16);
 
-    b_User_Edit_Check.addActionListener(new MemberInfoEvent(this));
+    bUpdateCheck.addActionListener(new MemberUpdateEvent(this, member));
 
     setUI();
   }
@@ -101,4 +104,11 @@ public class MemberUpdateUI extends JFrame {
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
   }
 
+  public char[] getPasswordFromField() { //비밀번호 수정
+    return passwordField.getPassword();
+  }
+
+  public String getPhoneNumFromField() {
+    return textField_PN.getText();
+  }
 }

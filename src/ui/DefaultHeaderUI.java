@@ -30,7 +30,7 @@ public class DefaultHeaderUI extends JPanel {
     setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(null);
 
-    JLabel backImageBtn = new JLabel();
+    JLabel backImageBtn = new JLabel("뒤로가기");
     Image originalBackImage = new ImageIcon("D:\\suwan\\java\\swing\\images\\뒤로가기.png.png").getImage();
     Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
     backImageBtn.setIcon(new ImageIcon(resizeBackImage));

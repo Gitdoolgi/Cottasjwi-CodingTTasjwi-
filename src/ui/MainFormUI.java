@@ -49,7 +49,7 @@ public class MainFormUI extends JFrame {
     classButton.setBounds(200, 400, 150, 50);
     classButton.addActionListener(e -> {
       setVisible(false);
-      new StatusUI();
+      new StatusUI(this, userInformation);
     });
     //좌표
     setUI();

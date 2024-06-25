@@ -6,6 +6,7 @@ import ui.MemberInfoUI;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLOutput;
 
 public class HeaderEvent implements MouseListener {
   private Object currentObj;
@@ -29,7 +30,10 @@ public class HeaderEvent implements MouseListener {
 
   @Override
   public void mousePressed(MouseEvent e) {
-    new MemberInfoUI(member);
+    String type = ((JLabel) e.getSource()).getText();
+    if (!type.equals("뒤로가기")) {
+      new MemberInfoUI(member);
+    }
   }
 
   @Override

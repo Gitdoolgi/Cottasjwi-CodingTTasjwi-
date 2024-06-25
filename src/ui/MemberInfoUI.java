@@ -5,6 +5,8 @@ import event.MemberInfoEvent;
 
 import java.awt.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 
 public class MemberInfoUI extends JFrame {
@@ -38,8 +40,8 @@ public class MemberInfoUI extends JFrame {
 
   Container cp = getContentPane();
   JPanel p1;
-  JButton b_Child_Reg, b_User_Edit;
-  JLabel label_info, label_ID, label_ID1, label_PWD, label_PWD1, label_NAME, label_NAME1, label_PN, label_PN1, label_JOIN_DATE, label_JOIN_DATE1, label_C_ID, label_C_ID1;
+  JButton bChildUpdate, bMemberUpdate;
+  JLabel label_info, label_ID, label_ID1, label_PWD, label_PWD1, label_NAME, label_NAME1, label_PN, label_PN1, label_ADDRESS, label_ADDRESS1, label_JOIN_DATE, label_JOIN_DATE1, label_C_ID, label_C_ID1;
 
   void init() {
     label_info = new JLabel();
@@ -54,16 +56,9 @@ public class MemberInfoUI extends JFrame {
     label_ID.setForeground(c1);
 
     label_ID1 = new JLabel();
-    label_ID1.setText("userID");
+    label_ID1.setText(member.getId());
     label_ID1.setHorizontalAlignment(SwingConstants.LEFT);
 
-    label_PWD = new JLabel();
-    label_PWD.setText("비밀번호  :  ");
-    label_PWD.setHorizontalAlignment(SwingConstants.RIGHT);
-    label_PWD.setForeground(c1);
-
-    label_PWD1 = new JLabel();
-    label_PWD1.setText("userPWD");
 
     label_NAME = new JLabel();
     label_NAME.setText("이름  :  ");
@@ -71,7 +66,7 @@ public class MemberInfoUI extends JFrame {
     label_NAME.setForeground(c1);
 
     label_NAME1 = new JLabel();
-    label_NAME1.setText("userName");
+    label_NAME1.setText(member.getName());
 
     label_PN = new JLabel();
     label_PN.setText("전화번호  :  ");
@@ -79,7 +74,16 @@ public class MemberInfoUI extends JFrame {
     label_PN.setForeground(c1);
 
     label_PN1 = new JLabel();
-    label_PN1.setText("userPhone");
+    label_PN1.setText(member.getPhoneNum());
+
+    label_ADDRESS = new JLabel();
+    label_ADDRESS.setText("주소 :  ");
+    label_ADDRESS.setHorizontalAlignment(SwingConstants.RIGHT);
+    label_ADDRESS.setForeground(c1);
+
+    label_ADDRESS1 = new JLabel();
+    label_ADDRESS1.setText(member.getAddress());
+
 
     label_JOIN_DATE = new JLabel();
     label_JOIN_DATE.setText("가입일  :  ");
@@ -87,7 +91,11 @@ public class MemberInfoUI extends JFrame {
     label_JOIN_DATE.setForeground(c1);
 
     label_JOIN_DATE1 = new JLabel();
-    label_JOIN_DATE1.setText("Join_Date");
+    Date memberJoinDate = member.getJoinDate();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+    String formattedDate = dateFormat.format(memberJoinDate);
+    label_JOIN_DATE1.setText(formattedDate);
+
 
     label_C_ID = new JLabel();
     label_C_ID.setText("자녀 아이디  :  ");
@@ -95,7 +103,7 @@ public class MemberInfoUI extends JFrame {
     label_C_ID.setForeground(c1);
 
     label_C_ID1 = new JLabel();
-    label_C_ID1.setText("C_ID");
+    label_C_ID1.setText(member.getMilktId());
 
     cp.setBackground(c9);
     cp.setLayout(new GridBagLayout());
@@ -124,19 +132,6 @@ public class MemberInfoUI extends JFrame {
     gbc.gridheight = 1;
     cp.add(label_ID1, gbc);
 
-    //비밀번호
-    gbc.gridx = 0;
-    gbc.gridy = 2;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 1;
-    cp.add(label_PWD, gbc);
-
-    gbc.gridx = 1;
-    gbc.gridy = 2;
-    gbc.gridwidth = 1;
-    gbc.gridheight = 1;
-    cp.add(label_PWD1, gbc);
-
     //이름
     gbc.gridx = 0;
     gbc.gridy = 3;
@@ -163,69 +158,80 @@ public class MemberInfoUI extends JFrame {
     gbc.gridheight = 1;
     cp.add(label_PN1, gbc);
 
-    //가입일
+    //주소
     gbc.gridx = 0;
     gbc.gridy = 5;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    cp.add(label_ADDRESS, gbc);
+
+    gbc.gridx = 1;
+    gbc.gridy = 5;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    cp.add(label_ADDRESS1, gbc);
+
+    //가입일
+    gbc.gridx = 0;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     cp.add(label_JOIN_DATE, gbc); //수정
 
     gbc.gridx = 1;
-    gbc.gridy = 5;
+    gbc.gridy = 6;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     cp.add(label_JOIN_DATE1, gbc);
 
     //자녀 아이디
     gbc.gridx = 0;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     cp.add(label_C_ID, gbc);
 
     gbc.gridx = 1;
-    gbc.gridy = 6;
+    gbc.gridy = 7;
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
 
     cp.add(label_C_ID1, gbc);
 
-    b_Child_Reg = new JButton("자녀등록");
-    b_Child_Reg.setBackground(c16);
-    b_Child_Reg.setForeground(c17);
-    b_Child_Reg.setPreferredSize(new Dimension(150, 40));
-    b_Child_Reg.addActionListener(new MemberInfoEvent("b_Child_Reg", member));
+    bChildUpdate = new JButton("자녀등록");
+    bChildUpdate.setBackground(c16);
+    bChildUpdate.setForeground(c17);
+    bChildUpdate.setPreferredSize(new Dimension(150, 40));
+    bChildUpdate.addActionListener(new MemberInfoEvent("bChildUpdate", member));
 
-    b_User_Edit = new JButton("회원정보 수정");
-    b_User_Edit.setBackground(c16);
-    b_User_Edit.setForeground(c17);
-    b_User_Edit.setPreferredSize(new Dimension(150, 40));
-    b_User_Edit.addActionListener(new MemberInfoEvent("b_User_Edit", member));
+    bMemberUpdate = new JButton("회원정보 수정");
+    bMemberUpdate.setBackground(c16);
+    bMemberUpdate.setForeground(c17);
+    bMemberUpdate.setPreferredSize(new Dimension(150, 40));
+    bMemberUpdate.addActionListener(new MemberInfoEvent("bMemberUpdate", member));
 
     gbc.fill = GridBagConstraints.NONE;
-    gbc.gridx = 0;
-    gbc.gridy = 7;
-    gbc.gridwidth = 2;
-    gbc.gridheight = 1;
-    cp.add(b_Child_Reg, gbc);
-
     gbc.gridx = 0;
     gbc.gridy = 8;
     gbc.gridwidth = 2;
     gbc.gridheight = 1;
-    cp.add(b_User_Edit, gbc);
+    cp.add(bChildUpdate, gbc);
+
+    gbc.gridx = 0;
+    gbc.gridy = 9;
+    gbc.gridwidth = 2;
+    gbc.gridheight = 1;
+    cp.add(bMemberUpdate, gbc);
 
     //폰트설정
     try {
-      //InputStream inputStream1 = new BufferedInputStream(new FileInputStream("D:\\java-swing-project\\src\\font\\Jalnan2TTF.ttf"));
       InputStream inputStream1 = new BufferedInputStream(new FileInputStream("./font/Jalnan2TTF.ttf"));
       Font f1 = Font.createFont(Font.TRUETYPE_FONT, inputStream1);
-      b_Child_Reg.setFont(f1.deriveFont(Font.PLAIN, 11));
-      b_User_Edit.setFont(f1.deriveFont(Font.PLAIN, 11));
+      bChildUpdate.setFont(f1.deriveFont(Font.PLAIN, 11));
+      bMemberUpdate.setFont(f1.deriveFont(Font.PLAIN, 11));
       label_info.setFont(f1.deriveFont(Font.PLAIN, 20));
       label_ID.setFont(f1.deriveFont(Font.PLAIN, 11));
       label_ID1.setFont(f1.deriveFont(Font.PLAIN, 14));
-      label_PWD.setFont(f1.deriveFont(Font.PLAIN, 11));
       label_NAME.setFont(f1.deriveFont(Font.PLAIN, 11));
       label_NAME1.setFont(f1.deriveFont(Font.PLAIN, 14));
       label_PN.setFont(f1.deriveFont(Font.PLAIN, 11));
@@ -252,13 +258,4 @@ public class MemberInfoUI extends JFrame {
     setVisible(true);
     setResizable(false);
   }
-
-  void p(String str) {
-    System.out.print(str);
-  }
-
-  void pln(String str) {
-    System.out.println(str);
-  }
-
 }
