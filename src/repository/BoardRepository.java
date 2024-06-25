@@ -4,33 +4,48 @@ import dbutil.MariaConnection;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardRepository {
   private Connection con = MariaConnection.getInstance().getConnection();
 
-  public int selectArticle(String title) {
+  public List<Object[]> selectArticle(String title, DefaultTableModel model) {
     PreparedStatement pstmt;
     ResultSet rs;
     ResultSetMetaData rsmd;
 
-    String sql = "select board_no,title,article,id,board_date from board join tspoon_member using(tspoon_no) " +
-            "where article like '%?%' order by board_no desc";
+    List<Object[]> li = new ArrayList<>();
 
-    int result = 0;
+    String sql = "select board_no,title,article,id,board_date from board join tspoon_member using(tspoon_no) where article like '%" + title + "%' order by board_no desc";
+
     try {
       pstmt = con.prepareStatement(sql);
-      pstmt.setString(1, title);
       rs = pstmt.executeQuery();
-
-      rsmd = rs.getMetaData();
-      DefaultTableModel dtm = new DefaultTableModel();
       while (rs.next()) {
-        System.out.println(rs.getInt("BOARD_NO"));
-        dtm.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE"),});
+        li.add(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
+        //model.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
+      }
+
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+
+    return li;
+  }
+
+  public void selectAllArticle(DefaultTableModel model) {
+    String sql = "select board_no,title,article,id,board_date from board join tspoon_member using(tspoon_no) order by board_no desc";
+    PreparedStatement pstmt;
+    ResultSet rs;
+    try {
+      pstmt = con.prepareStatement(sql);
+      rs = pstmt.executeQuery();
+      while (rs.next()) {
+        model.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
       }
     } catch (SQLException se) {
       se.printStackTrace();
     }
-    return result;
   }
 }

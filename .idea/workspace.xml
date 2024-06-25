@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StatusUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbutil/MaraiConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbutil/MariaConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/Study.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/Study.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/HeaderEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/HeaderEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/BoardEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/BoardEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberInfoEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/BoardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/ConnecttionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ConnecttionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MainFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainFormUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/BoardUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MemberUpdateUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberUpdateUI.java" afterDir="false" />
     </list>
@@ -115,7 +109,7 @@
       <workItem from="1719186913243" duration="15406000" />
       <workItem from="1719209041486" duration="12631000" />
       <workItem from="1719224067334" duration="2321000" />
-      <workItem from="1719271963594" duration="13407000" />
+      <workItem from="1719271963594" duration="21729000" />
     </task>
     <servers />
   </component>

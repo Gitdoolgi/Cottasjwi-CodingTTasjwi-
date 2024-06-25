@@ -1,6 +1,6 @@
 package ui;
 
-import event.MemberUpdateEvent;
+import event.MemberInfoEvent;
 
 import java.awt.*;
 import javax.swing.*;
@@ -87,7 +87,7 @@ public class MemberUpdateUI extends JFrame {
     cp2.add(b_User_Edit_Check, gbc);
     b_User_Edit_Check.setBackground(c16);
 
-    b_User_Edit_Check.addActionListener(new MemberUpdateEvent(this));
+    b_User_Edit_Check.addActionListener(new MemberInfoEvent(this));
 
     setUI();
   }

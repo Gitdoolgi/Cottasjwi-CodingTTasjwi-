@@ -2,7 +2,6 @@ package event;
 
 import dbutil.MariaConnection;
 import domain.SelectMember;
-import repository.MemberRepository;
 import ui.MemberUpdateUI;
 
 import javax.swing.*;
@@ -12,20 +11,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Set;
 
-public class MemberUpdateEvent implements ActionListener {
+public class MemberInfoEvent implements ActionListener {
   private Connection con = MariaConnection.getInstance().getConnection();
 
   private SelectMember member;
   private MemberUpdateUI memberUpdate;
   private String jbName;
 
-  public MemberUpdateEvent(MemberUpdateUI memberUpdate) {
+  public MemberInfoEvent(MemberUpdateUI memberUpdate) {
     this.memberUpdate = memberUpdate;
   }
 
-  public MemberUpdateEvent(String jbName, SelectMember member) {
+  public MemberInfoEvent(String jbName, SelectMember member) {
     this.jbName = jbName;
     this.member = member;
   }
@@ -71,9 +69,6 @@ public class MemberUpdateEvent implements ActionListener {
           se.printStackTrace();
         }
 
-        // 1. 요청 유저 아이디로 디비에서 불러오기
-        // 2. 해당 유저에 세터로 밀크티아이디 추가
-        // member.setMiltkId(userInput);
       } else { //입력값이 없을 때 or 창을 닫을 때
         JOptionPane.showMessageDialog(null, "자녀를 추가하지 않습니다");
       }

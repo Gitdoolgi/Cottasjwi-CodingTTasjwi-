@@ -1,37 +1,42 @@
 package event;
 
 import repository.BoardRepository;
+import ui.BoardUI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.List;
 
-public class BoardEvent implements KeyListener {
+public class BoardEvent extends KeyAdapter {
   private BoardRepository boardRepository;
-  private JTextField textField;
+  private JTextField textSearch;
+  private JTable table;
+  DefaultTableModel model;
 
-  public BoardEvent(JTextField textField) {
+  public BoardEvent(JTextField textSearch, JTable table, DefaultTableModel model) {
     this.boardRepository = new BoardRepository();
-    this.textField = textField;
-  }
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-
+    this.textSearch = textSearch;
+    this.table = table;
+    this.model = model;
   }
 
   @Override
   public void keyPressed(KeyEvent e) {
-    int key = e.getKeyCode();
+    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+      model.setNumRows(0);
+      List<Object[]> newModel = boardRepository.selectArticle(textSearch.getText(), model);
 
-    if (key == KeyEvent.VK_ENTER) {
-      String title = textField.getText();
-      boardRepository.selectArticle(title);
+      for (Object[] o : newModel) {
+        model.addRow(o);
+      }
+
+      table.setModel(model); // JTable을 검색한 값으로 새로 바꿔서 집어넣는 과정
+      table.revalidate();
+      table.repaint();
     }
-  }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
-
   }
 }

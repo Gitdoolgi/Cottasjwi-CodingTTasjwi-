@@ -1,7 +1,7 @@
 package ui;
 
 import domain.SelectMember;
-import event.MemberUpdateEvent;
+import event.MemberInfoEvent;
 
 import java.awt.*;
 import java.io.*;
@@ -194,13 +194,13 @@ public class MemberInfoUI extends JFrame {
     b_Child_Reg.setBackground(c16);
     b_Child_Reg.setForeground(c17);
     b_Child_Reg.setPreferredSize(new Dimension(150, 40));
-    b_Child_Reg.addActionListener(new MemberUpdateEvent("b_Child_Reg", member));
+    b_Child_Reg.addActionListener(new MemberInfoEvent("b_Child_Reg", member));
 
     b_User_Edit = new JButton("회원정보 수정");
     b_User_Edit.setBackground(c16);
     b_User_Edit.setForeground(c17);
     b_User_Edit.setPreferredSize(new Dimension(150, 40));
-    b_User_Edit.addActionListener(new MemberUpdateEvent("b_User_Edit", member));
+    b_User_Edit.addActionListener(new MemberInfoEvent("b_User_Edit", member));
 
     gbc.fill = GridBagConstraints.NONE;
     gbc.gridx = 0;
