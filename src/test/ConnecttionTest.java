@@ -1,6 +1,6 @@
 package test;
 
-import dbutil.MaraiConnection;
+import dbutil.MariaConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnecttionTest {
-  static Connection con = MaraiConnection.getInstance().getConnection();
+  static Connection con = MariaConnection.getInstance().getConnection();
 
   public static void main(String[] args) {
     //int r = insertMember("aq");

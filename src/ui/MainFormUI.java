@@ -13,7 +13,7 @@ public class MainFormUI extends JFrame {
   private static final JButton classButton = new JButton("학습현황");
   private SelectMember userInformation;
   private static MainFormUI mainFormUI;
-  private DefaultHeaderUI defaultHeaderUI;
+  private DefaultHeaderUI defaultHeader;
 
   private MainFormUI(SelectMember member) {
     mainFormUI = this;
@@ -35,8 +35,8 @@ public class MainFormUI extends JFrame {
     cp.setLayout(null);
 
     // 헤더
-    defaultHeaderUI = new DefaultHeaderUI("login-main", this, LoginFormUI.getLoginForm(), userInformation);
-    add(defaultHeaderUI);
+    defaultHeader = new DefaultHeaderUI("login-main", this, LoginFormUI.getLoginForm(), userInformation);
+    add(defaultHeader);
 
     cp.add(boardButton); //게시판 버튼
     boardButton.setBounds(40, 400, 150, 50);
@@ -47,7 +47,10 @@ public class MainFormUI extends JFrame {
 
     cp.add(classButton); //학습현황 버튼
     classButton.setBounds(200, 400, 150, 50);
-    classButton.addActionListener(e -> JOptionPane.showMessageDialog(null, classButton.getText()));
+    classButton.addActionListener(e -> {
+      setVisible(false);
+      new StatusUI();
+    });
     //좌표
     setUI();
   }

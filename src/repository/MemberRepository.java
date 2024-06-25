@@ -1,6 +1,6 @@
 package repository;
 
-import dbutil.MaraiConnection;
+import dbutil.MariaConnection;
 import domain.InsertMember;
 import domain.SelectMember;
 
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class MemberRepository {
   public static ConcurrentHashMap<String, SelectMember> members = new ConcurrentHashMap<>();
-  private Connection con = MaraiConnection.getInstance().getConnection();
+  private Connection con = MariaConnection.getInstance().getConnection();
   private static final Logger logger = Logger.getLogger(MemberRepository.class.getName());
 
   private static final String INFOLOGGER = "Database connection established";
@@ -38,7 +38,7 @@ public class MemberRepository {
         Date joinDate = rs.getDate("JOIN_DATE");
 
         selectMember = new SelectMember(tspoonNo, id, name, phoneNum, address, joinDate);
-        members.put("id", selectMember);
+        members.put(id, selectMember);
       } else {
         logger.severe("일치하는 회원이 없습니다.");
       }
@@ -46,7 +46,7 @@ public class MemberRepository {
       logger.severe("Error executing SQL query" + se.getMessage());
     } finally {
       if (rs != null) {
-        MaraiConnection.closeAll(pstmt, rs);
+        MariaConnection.closeAll(pstmt, rs);
       }
     }
     return selectMember;
@@ -69,7 +69,7 @@ public class MemberRepository {
       logger.severe("Error executing SQL query" + se.getMessage());
     } finally {
       if (rs != null) {
-        MaraiConnection.closeAll(pstmt, rs);
+        MariaConnection.closeAll(pstmt, rs);
       }
     }
     return userPassword;

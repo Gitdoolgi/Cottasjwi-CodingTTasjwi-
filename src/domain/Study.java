@@ -28,4 +28,44 @@ public class Study {
     this.sdate = sdate;
     this.edate = edate;
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getGrade() {
+    return grade;
+  }
+
+  public String getTeacher() {
+    return teacher;
+  }
+
+  public String getSubject() {
+    return subject;
+  }
+
+  public String getCname() {
+    return cname;
+  }
+
+  public int getMcnt() {
+    return mcnt;
+  }
+
+  public int getCcnt() {
+    return ccnt;
+  }
+
+  public int getProgress() {
+    return progress;
+  }
+
+  public Date getSdate() {
+    return sdate;
+  }
+
+  public Date getEdate() {
+    return edate;
+  }
 }

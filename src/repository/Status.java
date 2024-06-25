@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StatusRepository {
+public class Status {
   private Connection con = MariaConnection.getInstance().getConnection();
 
   String sql = "SELECT x.name, x.grade, x.teacher, x.subject, x.class_name, x.progress\n"

@@ -1,5 +1,6 @@
 package event;
 
+import domain.SelectMember;
 import ui.MemberInfoUI;
 
 import javax.swing.*;
@@ -9,10 +10,12 @@ import java.awt.event.MouseListener;
 public class HeaderEvent implements MouseListener {
   private Object currentObj;
   private Object previousUiobj;
+  private SelectMember member;
 
-  public HeaderEvent(Object currentObj, Object previousUiobj) {
+  public HeaderEvent(Object currentObj, Object previousUiobj, SelectMember member) {
     this.currentObj = currentObj;
     this.previousUiobj = previousUiobj;
+    this.member = member;
   }
 
   @Override
@@ -26,7 +29,7 @@ public class HeaderEvent implements MouseListener {
 
   @Override
   public void mousePressed(MouseEvent e) {
-    new MemberInfoUI();
+    new MemberInfoUI(member);
   }
 
   @Override

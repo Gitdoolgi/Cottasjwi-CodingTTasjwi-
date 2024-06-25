@@ -1,12 +1,12 @@
 package repository;
 
-import dbutil.MaraiConnection;
+import dbutil.MariaConnection;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 
 public class BoardRepository {
-  private Connection con = MaraiConnection.getInstance().getConnection();
+  private Connection con = MariaConnection.getInstance().getConnection();
 
   public int selectArticle(String title) {
     PreparedStatement pstmt;

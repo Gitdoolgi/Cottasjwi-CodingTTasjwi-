@@ -1,5 +1,6 @@
 package ui;
 
+import domain.SelectMember;
 import event.MemberUpdateEvent;
 
 import java.awt.*;
@@ -7,7 +8,11 @@ import java.io.*;
 import javax.swing.*;
 
 public class MemberInfoUI extends JFrame {
-  public MemberInfoUI() {
+  private DefaultHeaderUI defaultHeader;
+  private SelectMember member;
+
+  public MemberInfoUI(SelectMember member) {
+    this.member = member;
     init();
   }
 
@@ -37,7 +42,6 @@ public class MemberInfoUI extends JFrame {
   JLabel label_info, label_ID, label_ID1, label_PWD, label_PWD1, label_NAME, label_NAME1, label_PN, label_PN1, label_JOIN_DATE, label_JOIN_DATE1, label_C_ID, label_C_ID1;
 
   void init() {
-
     label_info = new JLabel();
     label_info.setText("☆나의 정보★");
     label_info.setHorizontalAlignment(SwingConstants.CENTER);
@@ -190,13 +194,13 @@ public class MemberInfoUI extends JFrame {
     b_Child_Reg.setBackground(c16);
     b_Child_Reg.setForeground(c17);
     b_Child_Reg.setPreferredSize(new Dimension(150, 40));
-    b_Child_Reg.addActionListener(new MemberUpdateEvent("b_Child_Reg"));
+    b_Child_Reg.addActionListener(new MemberUpdateEvent("b_Child_Reg", member));
 
     b_User_Edit = new JButton("회원정보 수정");
     b_User_Edit.setBackground(c16);
     b_User_Edit.setForeground(c17);
     b_User_Edit.setPreferredSize(new Dimension(150, 40));
-    b_User_Edit.addActionListener(new MemberUpdateEvent("b_User_Edit"));
+    b_User_Edit.addActionListener(new MemberUpdateEvent("b_User_Edit", member));
 
     gbc.fill = GridBagConstraints.NONE;
     gbc.gridx = 0;

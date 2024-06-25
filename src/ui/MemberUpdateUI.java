@@ -20,8 +20,10 @@ public class MemberUpdateUI extends JFrame {
   Color c16 = new Color(219, 242, 201);//연연두
   Color c18 = new Color(204, 228, 251);//하늘
 
+  public MemberUpdateUI() {
+    init();
+  }
 
-  @SuppressWarnings("deprecation")
   public void init() {
     cp2.setLayout(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
@@ -99,8 +101,4 @@ public class MemberUpdateUI extends JFrame {
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
   }
 
-  public static void main(String[] args) {
-    MemberUpdateUI a = new MemberUpdateUI();
-    a.init();
-  }
 }

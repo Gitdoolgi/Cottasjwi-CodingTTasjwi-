@@ -4,7 +4,6 @@ import domain.SelectMember;
 import event.HeaderEvent;
 
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
 import java.awt.*;
 
 public class DefaultHeaderUI extends JPanel {
@@ -12,6 +11,7 @@ public class DefaultHeaderUI extends JPanel {
   private Object currentObj;
   private Object previousUiobj;
   private SelectMember member;
+
 
   /**
    * @param status (login | logout);
@@ -35,7 +35,7 @@ public class DefaultHeaderUI extends JPanel {
     Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
     backImageBtn.setIcon(new ImageIcon(resizeBackImage));
     backImageBtn.setBounds(25, 65 / 2 - 10, 25, 20);
-    backImageBtn.addMouseListener(new HeaderEvent(currentObj, previousUiobj));
+    backImageBtn.addMouseListener(new HeaderEvent(currentObj, previousUiobj, member));
 
     if (status.equals("first")) {
       JLabel centerLabel = new JLabel("TSPOON");
@@ -58,11 +58,11 @@ public class DefaultHeaderUI extends JPanel {
       JLabel userLabel = new JLabel(member.getName());
       userLabel.setBounds(275, 65 / 2 - 10, 50, 20);
       add(userLabel);
-      userLabel.addMouseListener(new HeaderEvent(currentObj, null));
+      userLabel.addMouseListener(new HeaderEvent(currentObj, null, member));
 
       JLabel logoutLabel = new JLabel("로그아웃");
       logoutLabel.setBounds(327, 65 / 2 - 10, 55, 20);
-      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousUiobj));
+      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousUiobj, member));
       add(logoutLabel);
     }
 
@@ -76,11 +76,11 @@ public class DefaultHeaderUI extends JPanel {
       JLabel userLabel = new JLabel(member.getName());
       userLabel.setBounds(275, 65 / 2 - 10, 50, 20);
       add(userLabel);
-      userLabel.addMouseListener(new HeaderEvent(currentObj, null));
+      userLabel.addMouseListener(new HeaderEvent(currentObj, null, member));
 
       JLabel logoutLabel = new JLabel("로그아웃");
       logoutLabel.setBounds(327, 65 / 2 - 10, 55, 20);
-      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousUiobj));
+      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousUiobj, member));
       add(logoutLabel);
     }
   }
