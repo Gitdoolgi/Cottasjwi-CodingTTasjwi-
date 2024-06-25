@@ -1,9 +1,8 @@
 package repository;
 
 import dbutil.MaraiConnection;
-import domain.Member;
-import domain.ReceiveMember;
-import ui.LoginForm;
+import domain.InsertMember;
+import domain.SelectMember;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,15 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 public class MemberRepository {
-  public static ConcurrentHashMap<String, ReceiveMember> members = new ConcurrentHashMap<>();
+  public static ConcurrentHashMap<String, SelectMember> members = new ConcurrentHashMap<>();
   private Connection con = MaraiConnection.getInstance().getConnection();
   private static final Logger logger = Logger.getLogger(MemberRepository.class.getName());
 
   private static final String INFOLOGGER = "Database connection established";
 
-  public ReceiveMember selectMember(String userId) {
+  public SelectMember selectMember(String userId) {
     logger.info(INFOLOGGER);
-    ReceiveMember receiveMember = null;
+    SelectMember selectMember = null;
     String sql = "select TSPOON_NO, ID, NAME, PHONE_NUM, ADDRESS, JOIN_DATE from tspoon_member where ID=?";
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -38,8 +37,8 @@ public class MemberRepository {
         String address = rs.getString("ADDRESS");
         Date joinDate = rs.getDate("JOIN_DATE");
 
-        receiveMember = new ReceiveMember(tspoonNo, id, name, phoneNum, address, joinDate);
-        members.put("id", receiveMember);
+        selectMember = new SelectMember(tspoonNo, id, name, phoneNum, address, joinDate);
+        members.put("id", selectMember);
       } else {
         logger.severe("일치하는 회원이 없습니다.");
       }
@@ -50,7 +49,7 @@ public class MemberRepository {
         MaraiConnection.closeAll(pstmt, rs);
       }
     }
-    return receiveMember;
+    return selectMember;
   }
 
   public char[] selectUserPassword(String id) {
@@ -76,16 +75,16 @@ public class MemberRepository {
     return userPassword;
   }
 
-  public int insertMember(Member member) {
+  public int insertMember(InsertMember insertMember) {
     String sql = "insert into tspoon_member(id, password, name, phone_num, address, join_date) values (?,?,?,?,?,now())";
     int result = 0;
     try {
       PreparedStatement pstmt = con.prepareStatement(sql);
-      pstmt.setString(1, member.getId());
-      pstmt.setString(2, member.getPassword());
-      pstmt.setString(3, member.getName());
-      pstmt.setString(4, member.getPhone_num());
-      pstmt.setString(5, member.getAddress());
+      pstmt.setString(1, insertMember.getId());
+      pstmt.setString(2, insertMember.getPassword());
+      pstmt.setString(3, insertMember.getName());
+      pstmt.setString(4, insertMember.getPhone_num());
+      pstmt.setString(5, insertMember.getAddress());
 
       result = pstmt.executeUpdate();
       con.commit();

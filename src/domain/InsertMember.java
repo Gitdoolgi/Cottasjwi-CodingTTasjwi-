@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Date;
 
-public class Member {
+public class InsertMember {
   private int tspoon_no;
   private String id;
   private String password;
@@ -11,7 +11,7 @@ public class Member {
   private String address;
   private Date join_date;
 
-  public Member(String id, String password, String name, String phone_num, String address, Date join_date) {
+  public InsertMember(String id, String password, String name, String phone_num, String address, Date join_date) {
     this.id = id;
     this.password = password;
     this.name = name;

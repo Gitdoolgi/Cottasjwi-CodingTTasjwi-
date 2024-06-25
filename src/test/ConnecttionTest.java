@@ -1,7 +1,6 @@
 package test;
 
 import dbutil.MaraiConnection;
-import domain.Member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

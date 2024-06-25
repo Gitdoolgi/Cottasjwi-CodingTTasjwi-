@@ -1,6 +1,6 @@
 package ui;
 
-import domain.ReceiveMember;
+import domain.SelectMember;
 import event.LoginEvent;
 import repository.MemberRepository;
 
@@ -11,9 +11,9 @@ import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-public class LoginForm extends JFrame {
+public class LoginFormUI extends JFrame {
 
-  private static final Logger logger = Logger.getLogger(LoginForm.class.getName());
+  private static final Logger logger = Logger.getLogger(LoginFormUI.class.getName());
   private MemberRepository memberRepository;
   //id, pwd 입력
   private static final JLabel idLabel = new JLabel("ID : ");
@@ -23,25 +23,23 @@ public class LoginForm extends JFrame {
   //로그인,회원가입 버튼
   static final JButton loginButton = new JButton("Login");
   private static final JButton registerButton = new JButton("Register");
-  private static LoginForm loginForm;
+  private static LoginFormUI loginFormUI;
 
-  public LoginForm() {
+  private DefaultHeaderUI defaultHeaderUI;
+
+  public LoginFormUI() {
     memberRepository = new MemberRepository();
-    loginForm = this;
+    loginFormUI = this;
     init();
   }
 
-  public static LoginForm getLoginForm() {
-    if (loginForm == null) {
-      loginForm = new LoginForm();
+  public static LoginFormUI getLoginForm() {
+    if (loginFormUI == null) {
+      loginFormUI = new LoginFormUI();
     }
-    return loginForm;
+    return loginFormUI;
   }
 
-  void clearFields() {
-    idField.setText("");
-    pwdField.setText("");
-  }
 
   void showMessage(String message) {
     JOptionPane.showMessageDialog(null, message);
@@ -59,7 +57,7 @@ public class LoginForm extends JFrame {
 
   void login() {
     String userId = idField.getText();
-    ReceiveMember userInformation = memberRepository.selectMember(userId);
+    SelectMember userInformation = memberRepository.selectMember(userId);
     char[] enteredPassword = pwdField.getPassword();
     char[] storedPassword = memberRepository.selectUserPassword(userId);
     if (userId.isEmpty() || storedPassword == null || enteredPassword.length == 0) {
@@ -69,8 +67,11 @@ public class LoginForm extends JFrame {
     }
     if (isPasswordMatch(enteredPassword, storedPassword)) {
       showMessage("Login Successful");
-      MainForm mainForm = MainForm.getMainForm(userInformation);
-      mainForm.setVisible(true); // MainForm 초기화
+      MainFormUI mainFormUI = MainFormUI.getMainForm(userInformation);
+      idField.setText("");
+      pwdField.setText("");
+      idField.requestFocus();
+      mainFormUI.setVisible(true); // MainForm 초기화
       setVisible(false);
     } else {
       showMessage("Login Failed");
@@ -90,6 +91,11 @@ public class LoginForm extends JFrame {
   void init() {
     Container cp = getContentPane();
     cp.setLayout(null);
+
+    // 헤더
+    defaultHeaderUI = new DefaultHeaderUI("first", this, null, null);
+    add(defaultHeaderUI);
+
     //버튼, 입력
     cp.add(idLabel);
     idLabel.setBounds(80, 285, 70, 30);
@@ -112,7 +118,7 @@ public class LoginForm extends JFrame {
     cp.add(registerButton);
     registerButton.setBounds(205, 375, 115, 30);
     registerButton.addActionListener(e -> {
-      new RegisterUser(this);
+      new RegisterUserUI(this);
       setVisible(false);
     });
 

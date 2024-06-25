@@ -1,9 +1,9 @@
 package event;
 
-import domain.Member;
+import domain.InsertMember;
 import repository.MemberRepository;
-import ui.LoginForm;
-import ui.RegisterUser;
+import ui.LoginFormUI;
+import ui.RegisterUserUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,15 +14,15 @@ public class RegisterEvent implements ActionListener {
 
   private List<JTextField> textFieldList;
   private MemberRepository memberRepository;
-  private RegisterUser registerUser;
+  private RegisterUserUI registerUserUI;
 
-  private LoginForm loginForm;
+  private LoginFormUI loginFormUI;
 
-  public RegisterEvent(List<JTextField> textFieldList, RegisterUser registerUser, LoginForm loginForm) {
+  public RegisterEvent(List<JTextField> textFieldList, RegisterUserUI registerUserUI, LoginFormUI loginFormUI) {
     this.textFieldList = textFieldList;
     this.memberRepository = new MemberRepository();
-    this.registerUser = registerUser;
-    this.loginForm = loginForm;
+    this.registerUserUI = registerUserUI;
+    this.loginFormUI = loginFormUI;
   }
 
   @Override
@@ -43,15 +43,15 @@ public class RegisterEvent implements ActionListener {
     }
 
     // 성공했을 때
-    loginForm.setVisible(true);
-    registerUser.setVisible(false);
+    loginFormUI.setVisible(true);
+    registerUserUI.setVisible(false);
 
     if (!passwordValue.equals(passwordCheckValue)) {
       JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "Message", JOptionPane.ERROR_MESSAGE);
       return;
     }
 
-    int result = memberRepository.insertMember(new Member(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null));
+    int result = memberRepository.insertMember(new InsertMember(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null));
     if (result == 0) {
       JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "Message", JOptionPane.ERROR_MESSAGE);
       return;

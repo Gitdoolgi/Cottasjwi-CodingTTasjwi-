@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Date;
 
-public class ReceiveMember {
+public class SelectMember {
   private int tspoon_no;
   private String id;
   private String name;
@@ -11,7 +11,7 @@ public class ReceiveMember {
   private Date joinDate;
   private String milktId;
 
-  public ReceiveMember(int tspoon_no, String id, String name, String phoneNum, String address, Date joinDate) {
+  public SelectMember(int tspoon_no, String id, String name, String phoneNum, String address, Date joinDate) {
     this.tspoon_no = tspoon_no;
     this.id = id;
     this.name = name;

@@ -1,7 +1,5 @@
 package event;
 
-import ui.LoginForm;
-
 import javax.swing.*;
 import java.awt.event.*;
 

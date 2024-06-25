@@ -1,9 +1,9 @@
-import ui.LoginForm;
+import ui.LoginFormUI;
 
 import javax.swing.*;
 
 public class Runner {
   public static void main(String[] args) {
-    SwingUtilities.invokeLater(LoginForm::getLoginForm);
+    SwingUtilities.invokeLater(LoginFormUI::getLoginForm);
   }
 }

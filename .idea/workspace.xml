@@ -6,11 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/BoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/InsertMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/ReceiveMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/SelectMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/BoardEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/BoardEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/HeaderEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/HeaderEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/event/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/LoginEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/RegisterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ConnecttionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ConnecttionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BoardUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginFormUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainFormUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MemberInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/MemberUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberUpdateUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterUserUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +119,8 @@
       <workItem from="1719186788336" duration="104000" />
       <workItem from="1719186913243" duration="15406000" />
       <workItem from="1719209041486" duration="12631000" />
-      <workItem from="1719224067334" duration="989000" />
+      <workItem from="1719224067334" duration="2321000" />
+      <workItem from="1719271963594" duration="4144000" />
     </task>
     <servers />
   </component>

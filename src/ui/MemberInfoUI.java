@@ -6,7 +6,10 @@ import java.awt.*;
 import java.io.*;
 import javax.swing.*;
 
-public class MemberInfo extends JFrame {
+public class MemberInfoUI extends JFrame {
+  public MemberInfoUI() {
+    init();
+  }
 
   Color c0 = new Color(255, 255, 255);//화이트
   Color c1 = new Color(139, 73, 39);//갈
@@ -244,7 +247,6 @@ public class MemberInfo extends JFrame {
     setLocationRelativeTo(null);
     setVisible(true);
     setResizable(false);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
   void p(String str) {

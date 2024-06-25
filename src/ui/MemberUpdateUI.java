@@ -5,7 +5,7 @@ import event.MemberUpdateEvent;
 import java.awt.*;
 import javax.swing.*;
 
-public class MemberUpdate extends JFrame {
+public class MemberUpdateUI extends JFrame {
   private Container cp2 = getContentPane();
   private JPanel p2;
   private JButton b_PWD, b_User_Edit_Check;
@@ -100,7 +100,7 @@ public class MemberUpdate extends JFrame {
   }
 
   public static void main(String[] args) {
-    MemberUpdate a = new MemberUpdate();
+    MemberUpdateUI a = new MemberUpdateUI();
     a.init();
   }
 }

@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterUser extends JFrame {
+public class RegisterUserUI extends JFrame {
   private List<JTextField> textFieldList;
   private JTextField idTextFiedl;
   private JTextField passwordTextField;
@@ -19,15 +19,15 @@ public class RegisterUser extends JFrame {
   private JTextField passwordCheckTextField;
   private JTextField addressTextField;
   private JTextField phoneNumTextfield;
-  private DefaultHeader defaultHeader;
+  private DefaultHeaderUI defaultHeaderUI;
 
-  private LoginForm loginForm;
+  private LoginFormUI loginFormUI;
 
-  public RegisterUser(LoginForm loginForm) {
-    this.loginForm = loginForm;
+  public RegisterUserUI(LoginFormUI loginFormUI) {
+    this.loginFormUI = loginFormUI;
 
-    defaultHeader = new DefaultHeader("logout", this, loginForm);
-    add(defaultHeader);
+    defaultHeaderUI = new DefaultHeaderUI("register", this, loginFormUI, null);
+    add(defaultHeaderUI);
 
 
     // 로고 패널
@@ -127,7 +127,7 @@ public class RegisterUser extends JFrame {
     textFieldList.add(phoneNumTextfield);
     textFieldList.add(addressTextField);
 
-    joinBtn.addActionListener(new RegisterEvent(textFieldList, this, loginForm));
+    joinBtn.addActionListener(new RegisterEvent(textFieldList, this, loginFormUI));
     for (JTextField jtf : textFieldList) {
       jtf.addKeyListener(new KeyAdapter() {
         @Override

@@ -1,6 +1,6 @@
 package event;
 
-import domain.BoardRepository;
+import repository.BoardRepository;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

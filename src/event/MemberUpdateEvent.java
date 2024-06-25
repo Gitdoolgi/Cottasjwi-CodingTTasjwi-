@@ -1,17 +1,17 @@
 package event;
 
-import ui.MemberUpdate;
+import ui.MemberUpdateUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MemberUpdateEvent implements ActionListener {
-  private MemberUpdate memberUpdate;
+  private MemberUpdateUI memberUpdateUI;
   private String jbName;
 
-  public MemberUpdateEvent(MemberUpdate memberUpdate) {
-    this.memberUpdate = memberUpdate;
+  public MemberUpdateEvent(MemberUpdateUI memberUpdateUI) {
+    this.memberUpdateUI = memberUpdateUI;
   }
 
   public MemberUpdateEvent(String jbName) {
@@ -31,8 +31,8 @@ public class MemberUpdateEvent implements ActionListener {
         JOptionPane.showMessageDialog(null, "자녀를 추가하지 않습니다");
       }
     } else if (jbName.equals("b_User_Edit")) {
-      MemberUpdate memberUpdate = new MemberUpdate();
-      memberUpdate.init();
+      MemberUpdateUI memberUpdateUI = new MemberUpdateUI();
+      memberUpdateUI.init();
     }
   }
 }

@@ -1,5 +1,7 @@
 package event;
 
+import ui.MemberInfoUI;
+
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -15,13 +17,16 @@ public class HeaderEvent implements MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    ((JFrame) currentObj).setVisible(false);
-    ((JFrame) previousUiobj).setVisible(true);
+    if (previousUiobj != null) {
+      ((JFrame) currentObj).setVisible(false);
+      ((JFrame) previousUiobj).setVisible(true);
+    }
+
   }
 
   @Override
   public void mousePressed(MouseEvent e) {
-
+    new MemberInfoUI();
   }
 
   @Override
