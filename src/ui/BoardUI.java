@@ -1,5 +1,6 @@
 package ui;
 
+import domain.SelectMember;
 import event.BoardEvent;
 import repository.BoardRepository;
 
@@ -17,24 +18,34 @@ public class BoardUI extends JFrame implements ActionListener {
 
   private BoardRepository boardRepository;
   private JPanel boardPanel;
+  private JPanel boardPanelParent;
   private JTextField textSearch;
   private JTable table;
   private JScrollPane scrollPane;
   private JButton writeButton;
-
+  private DefaultHeaderUI defaultHeader;
   private String colNames[] = {"글번호", "제목", "글내용", "글쓴이", "작성일"};
   private DefaultTableModel model = new DefaultTableModel(colNames, 0);
 
-  public BoardUI() {
+  private MainFormUI prevObj;
+
+  public BoardUI(MainFormUI mainFormUI, SelectMember member) {
+    prevObj = mainFormUI;
     boardRepository = new BoardRepository();
 
     setBounds(100, 100, 400, 710);
     boardPanel = new JPanel();
-    boardPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-    setContentPane(boardPanel);
-    boardPanel.setLayout(null);
+    boardPanelParent = new JPanel();
+    boardPanelParent.add(boardPanel);
+    boardPanel.setBounds(30, 65, 380, 665);
+    boardPanelParent.setLayout(null);
 
+    setContentPane(boardPanelParent);
+
+    // 헤더 추가
+    defaultHeader = new DefaultHeaderUI("login", this, prevObj, member);
+    add(defaultHeader);
     textSearch = new JTextField();
     textSearch.setBounds(30, 52, 208, 27);
     textSearch.setText("내용 검색");
@@ -48,7 +59,6 @@ public class BoardUI extends JFrame implements ActionListener {
     boardPanel.add(writeButton);
 
     scrollPane = new JScrollPane();
-    scrollPane.setBounds(30, 108, 327, 534);
 
     boardPanel.add(scrollPane);
 

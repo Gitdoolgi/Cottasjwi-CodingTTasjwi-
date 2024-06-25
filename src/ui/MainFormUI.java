@@ -42,7 +42,7 @@ public class MainFormUI extends JFrame {
     boardButton.setBounds(40, 400, 150, 50);
     boardButton.addActionListener(e -> {
       setVisible(false);
-      new BoardUI();
+      new BoardUI(this, userInformation);
     });
 
     cp.add(classButton); //학습현황 버튼
