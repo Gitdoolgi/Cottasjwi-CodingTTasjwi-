@@ -22,7 +22,7 @@ public class MainFormUI extends JFrame {
   }
 
   public static MainFormUI getMainForm(SelectMember member) {
-    if (mainFormUI == null) {
+    if (member != null) {
       mainFormUI = new MainFormUI(member);
     }
     return mainFormUI;

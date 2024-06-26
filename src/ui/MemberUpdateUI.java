@@ -3,18 +3,17 @@ package ui;
 import domain.SelectMember;
 import event.MemberUpdateEvent;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class MemberUpdateUI extends JFrame {
   private Container cp2 = getContentPane();
   private JPanel p2;
   private JButton bUpdateCheck;
-  private JLabel label_Edit_Main, label_PWD, label_PN;
+  private JLabel label_Edit_Main, label_PWD, label_PN, label_ADDRESS;
   private JPasswordField passwordField;
-  private JTextField textField_PN;
+  private JTextField textField_PN, textField_ADDRESS;
   private SelectMember member;
-
   Color c1 = new Color(139, 73, 39);//갈
   Color c13 = new Color(251, 172, 204);
   Color c14 = new Color(223, 143, 174);//찐찐핑
@@ -58,7 +57,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    passwordField = new JPasswordField(14);
+    passwordField = new JPasswordField();
     cp2.add(passwordField, gbc);
     passwordField.setForeground(c14);
 
@@ -77,12 +76,29 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    textField_PN = new JTextField(14);
+    textField_PN = new JTextField();
     cp2.add(textField_PN, gbc);
-
 
     gbc.gridx = 0;
     gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.insets = new Insets(10, 5, 20, 20);
+    label_ADDRESS = new JLabel();
+    label_ADDRESS.setText("새 주소 :  ");
+    cp2.add(label_ADDRESS, gbc);
+    label_ADDRESS.setForeground(c1);
+
+    gbc.gridx = 1;
+    gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.gridheight = 1;
+    gbc.insets = new Insets(10, 5, 20, 20);
+    textField_ADDRESS = new JTextField();
+    cp2.add(textField_ADDRESS, gbc);
+
+    gbc.gridx = 0;
+    gbc.gridy = 5;
     gbc.gridwidth = 2;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
@@ -90,7 +106,7 @@ public class MemberUpdateUI extends JFrame {
     cp2.add(bUpdateCheck, gbc);
     bUpdateCheck.setBackground(c16);
 
-    bUpdateCheck.addActionListener(new MemberUpdateEvent(this, member));
+    bUpdateCheck.addActionListener(new MemberUpdateEvent(this));
 
     setUI();
   }
@@ -110,5 +126,9 @@ public class MemberUpdateUI extends JFrame {
 
   public String getPhoneNumFromField() {
     return textField_PN.getText();
+  }
+
+  public String getAddressFromField() {
+    return textField_ADDRESS.getText();
   }
 }

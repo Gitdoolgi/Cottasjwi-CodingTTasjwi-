@@ -3,12 +3,14 @@ package repository;
 import dbutil.MariaConnection;
 import domain.InsertMember;
 import domain.SelectMember;
+import domain.dto.SelectMilktMember;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -22,9 +24,10 @@ public class MemberRepository {
   public SelectMember selectMember(String userId) {
     logger.info(INFOLOGGER);
     SelectMember selectMember = null;
-    String sql = "select TSPOON_NO, ID, NAME, PHONE_NUM, ADDRESS, JOIN_DATE from tspoon_member where ID=?";
     PreparedStatement pstmt = null;
     ResultSet rs = null;
+
+    String sql = "select TSPOON_NO, ID, NAME, PHONE_NUM, ADDRESS, JOIN_DATE from tspoon_member where ID=?";
     try {
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, userId);
@@ -38,7 +41,11 @@ public class MemberRepository {
         Date joinDate = rs.getDate("JOIN_DATE");
 
         selectMember = new SelectMember(tspoonNo, id, name, phoneNum, address, joinDate);
-        members.put(id, selectMember);
+        Optional<SelectMilktMember> selectMilktMember = checkMilktMember(tspoonNo);
+
+        if (!selectMilktMember.isEmpty()) {
+          selectMember.setMilktId(selectMilktMember.get().getMilktMemberName());
+        }
       } else {
         logger.severe("일치하는 회원이 없습니다.");
       }
@@ -58,7 +65,7 @@ public class MemberRepository {
     ResultSet rs = null;
     char[] userPassword = {};
     try {
-      pstmt = con.prepareStatement("select password from TSPOON_MEMBER where ID=?");
+      pstmt = con.prepareStatement("select PASSWORD from TSPOON_MEMBER where ID=?");
       pstmt.setString(1, id);
       rs = pstmt.executeQuery();
       if (rs.next()) {
@@ -76,7 +83,7 @@ public class MemberRepository {
   }
 
   public int insertMember(InsertMember insertMember) {
-    String sql = "insert into tspoon_member(id, password, name, phone_num, address, join_date) values (?,?,?,?,?,now())";
+    String sql = "insert into tspoon_member(ID, PASSWORD, NAME, PHONE_NUM, ADDRESS, JOIN_DATE) values (?,?,?,?,?,now())";
     int result = 0;
     try {
       PreparedStatement pstmt = con.prepareStatement(sql);
@@ -93,6 +100,30 @@ public class MemberRepository {
       System.out.println("아이디 중복");
     }
     return result;
+  }
+
+  public Optional<SelectMilktMember> checkMilktMember(int tspoonNo) {
+    String sql = "select tm.NAME 부모,  mm.NAME 자녀 ,mm.MILKTID 자녀아이디 from\n" +
+            "tspoon_member tm join milk_member mm on tm.TSPOON_NO = mm.TSPOON_NO where tm.TSPOON_NO = ?";
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    SelectMilktMember selectMilktMember = null;
+    try {
+      pstmt = con.prepareStatement(sql);
+      pstmt.setInt(1, tspoonNo);
+
+      rs = pstmt.executeQuery();
+
+      while (rs.next()) {
+        String tspoonMemberName = rs.getString("부모");
+        String milktMemberName = rs.getString("자녀");
+        String milktid = rs.getString("자녀아이디");
+        selectMilktMember = new SelectMilktMember(tspoonMemberName, milktMemberName, milktid);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return Optional.ofNullable(selectMilktMember);
   }
 
 }

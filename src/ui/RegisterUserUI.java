@@ -128,6 +128,7 @@ public class RegisterUserUI extends JFrame {
     textFieldList.add(addressTextField);
 
     joinBtn.addActionListener(new RegisterEvent(textFieldList, this, loginFormUI));
+
     for (JTextField jtf : textFieldList) {
       jtf.addKeyListener(new KeyAdapter() {
         @Override
@@ -146,9 +147,9 @@ public class RegisterUserUI extends JFrame {
   private void setUI() {
     setLayout(new BorderLayout());
     getContentPane().setBackground(new Color(192, 220, 233));
-    setLocationRelativeTo(null);
-    setVisible(true);
     setSize(400, 710);
+    setVisible(true);
+    setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 }

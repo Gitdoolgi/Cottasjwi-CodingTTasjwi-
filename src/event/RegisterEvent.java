@@ -43,8 +43,6 @@ public class RegisterEvent implements ActionListener {
     }
 
     // 성공했을 때
-    loginFormUI.setVisible(true);
-    registerUserUI.setVisible(false);
 
     if (!passwordValue.equals(passwordCheckValue)) {
       JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "Message", JOptionPane.ERROR_MESSAGE);
@@ -56,6 +54,9 @@ public class RegisterEvent implements ActionListener {
       JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "Message", JOptionPane.ERROR_MESSAGE);
       return;
     }
+
+    loginFormUI.setVisible(true);
+    registerUserUI.setVisible(false);
 
   }
 

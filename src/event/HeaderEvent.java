@@ -6,7 +6,6 @@ import ui.MemberInfoUI;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.SQLOutput;
 
 public class HeaderEvent implements MouseListener {
   private Object currentObj;
