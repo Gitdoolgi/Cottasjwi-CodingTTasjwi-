@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterUserUI extends JFrame {
+public class RegisterMemberUI extends JFrame {
   private List<JTextField> textFieldList;
   private JTextField idTextFiedl;
   private JTextField passwordTextField;
@@ -23,7 +23,7 @@ public class RegisterUserUI extends JFrame {
 
   private LoginFormUI loginFormUI;
 
-  public RegisterUserUI(LoginFormUI loginFormUI) {
+  public RegisterMemberUI(LoginFormUI loginFormUI) {
     this.loginFormUI = loginFormUI;
 
     defaultHeaderUI = new DefaultHeaderUI("register", this, loginFormUI, null);

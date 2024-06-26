@@ -118,7 +118,7 @@ public class LoginFormUI extends JFrame {
     cp.add(registerButton);
     registerButton.setBounds(205, 375, 115, 30);
     registerButton.addActionListener(e -> {
-      new RegisterUserUI(this);
+      new RegisterMemberUI(this);
       setVisible(false);
     });
 
