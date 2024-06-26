@@ -3,8 +3,8 @@ package ui;
 import domain.SelectMember;
 import event.MemberUpdateEvent;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class MemberUpdateUI extends JFrame {
   private Container cp2 = getContentPane();
@@ -23,7 +23,6 @@ public class MemberUpdateUI extends JFrame {
 
   public MemberUpdateUI(SelectMember member) {
     this.member = member;
-    init();
   }
 
   public void init() {
@@ -32,7 +31,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.gridwidth = 2;
-    gbc.gridheight = 1;
+    gbc.gridheight = 2;
     gbc.insets = new Insets(20, 5, 20, 20);
     label_Edit_Main = new JLabel();
     label_Edit_Main.setText("회원정보 수정 페이지");
@@ -57,7 +56,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    passwordField = new JPasswordField();
+    passwordField = new JPasswordField(14);
     cp2.add(passwordField, gbc);
     passwordField.setForeground(c14);
 
@@ -76,7 +75,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    textField_PN = new JTextField();
+    textField_PN = new JTextField(14);
     cp2.add(textField_PN, gbc);
 
     gbc.gridx = 0;
@@ -94,7 +93,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.gridwidth = 1;
     gbc.gridheight = 1;
     gbc.insets = new Insets(10, 5, 20, 20);
-    textField_ADDRESS = new JTextField();
+    textField_ADDRESS = new JTextField(14);
     cp2.add(textField_ADDRESS, gbc);
 
     gbc.gridx = 0;
@@ -106,7 +105,7 @@ public class MemberUpdateUI extends JFrame {
     cp2.add(bUpdateCheck, gbc);
     bUpdateCheck.setBackground(c16);
 
-    bUpdateCheck.addActionListener(new MemberUpdateEvent(this));
+    bUpdateCheck.addActionListener(new MemberUpdateEvent(this, member));
 
     setUI();
   }

@@ -2,46 +2,45 @@ package event;
 
 import dbutil.MariaConnection;
 import domain.SelectMember;
-import ui.MemberUpdateUI;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+import ui.MemberUpdateUI;
 
 public class MemberUpdateEvent implements ActionListener {
-  private Connection con = MariaConnection.getInstance().getConnection();
 
   private SelectMember member;
   private MemberUpdateUI memberUpdate;
 
-  public MemberUpdateEvent(MemberUpdateUI memberUpdate) {
+  public MemberUpdateEvent(MemberUpdateUI memberUpdate, SelectMember member) {
     this.memberUpdate = memberUpdate;
-  }
-
-  public MemberUpdateEvent(SelectMember member) {
     this.member = member;
   }
 
+  private Connection con = MariaConnection.getInstance().getConnection();
+
+  //ResultSet rs;
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    //ResultSet rs;
+
     char[] newPasswordChars = memberUpdate.getPasswordFromField();
     String newPassword = new String(newPasswordChars);
     String newPhoneNumber = memberUpdate.getPhoneNumFromField();
     String newAddress = memberUpdate.getAddressFromField();
-    String sql1 = "UPDATE TSPOON_MEMBER set PASSWORD = ? WHERE TSPOON_ID = ? "; //비밀번호 수정
-    String sql2 = "UPDATE TSPOON_MEMBER set PHOEN_NUM = ? WHERE TSPOON_ID = ? "; //전화번호 수정
-    String sql3 = "UPDATE TSPOON_MEMBER set ADDRESS = ? WHERE TSPOON_ID = ? "; //주소 수정
+    String sql1 = "UPDATE TSPOON_MEMBER set PASSWORD = ? WHERE ID = ? "; //비밀번호 수정
+    String sql2 = "UPDATE TSPOON_MEMBER set PHONE_NUM = ? WHERE ID = ? "; //전화번호 수정
+    String sql3 = "UPDATE TSPOON_MEMBER set ADDRESS = ? WHERE ID = ? "; //주소 수정
     PreparedStatement pstmt1, pstmt2, pstmt3;
-
-    if (newPassword != null) {
-      if (newPhoneNumber != null) {
-        if (newPhoneNumber.length() >= 10 && newPhoneNumber.length() <= 11) {
-          if (newAddress != null) { //비밀번호, 전화번호, 주소
+    if (newPassword.trim().length() > 0) {
+      if (newPhoneNumber.trim().length() > 0) {
+        if (newPhoneNumber.trim().length() >= 10 && newPhoneNumber.length() <= 11) {
+          if (newAddress.trim().length() > 0) { //비밀번호, 전화번호, 주소
             try {
               pstmt1 = con.prepareStatement(sql1); //비밀번호 수정 코드
               pstmt1.setString(1, newPassword);
@@ -74,7 +73,6 @@ public class MemberUpdateEvent implements ActionListener {
             } catch (SQLException se) {
               System.out.println("정보를 수정할 수 없습니다");
               JOptionPane.showMessageDialog(null, "정보를 수정할 수 없습니다", "경고!", JOptionPane.WARNING_MESSAGE);
-
             }
           } else { //비밀번호, 전화번호
             try {
@@ -106,7 +104,7 @@ public class MemberUpdateEvent implements ActionListener {
           JOptionPane.showMessageDialog(null, "정확한 전화번호를 입력해주세요", "경고!", JOptionPane.WARNING_MESSAGE);
         }
       } else {
-        if (newAddress != null) { //비밀번호, 주소
+        if (newAddress.trim().length() > 0) { //비밀번호, 주소
           try {
             pstmt1 = con.prepareStatement(sql1); //비밀번호 수정 코드
             pstmt1.setString(1, newPassword);
@@ -150,9 +148,9 @@ public class MemberUpdateEvent implements ActionListener {
         }
       }
     } else { //비밀번호 null
-      if (newPhoneNumber != null) {
-        if (newPhoneNumber.length() >= 10 && newPhoneNumber.length() <= 11) {
-          if (newAddress != null) { //전화번호, 주소
+      if (newPhoneNumber.trim().length() > 0) {
+        if (newPhoneNumber.trim().length() >= 10 && newPhoneNumber.length() <= 11) {
+          if (newAddress.trim().length() > 0) { //전화번호, 주소
             try {
               pstmt2 = con.prepareStatement(sql2); //전화번호 수정 코드
               pstmt2.setString(1, newPhoneNumber);
@@ -198,7 +196,7 @@ public class MemberUpdateEvent implements ActionListener {
           JOptionPane.showMessageDialog(null, "정확한 전화번호를 입력해주세요", "경고!", JOptionPane.WARNING_MESSAGE);
         }
       } else {
-        if (newAddress != null) { //주소
+        if (newAddress.trim().length() > 0) { //주소
           try {
             pstmt3 = con.prepareStatement(sql3); //주소 수정 코드
             pstmt3.setString(1, newAddress);

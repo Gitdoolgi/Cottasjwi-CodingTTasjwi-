@@ -92,7 +92,7 @@ public class MemberInfoUI extends JFrame {
 
     label_JOIN_DATE1 = new JLabel();
     Date memberJoinDate = member.getJoinDate();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String formattedDate = dateFormat.format(memberJoinDate);
     label_JOIN_DATE1.setText(formattedDate);
 
