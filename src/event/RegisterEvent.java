@@ -45,15 +45,18 @@ public class RegisterEvent implements ActionListener {
     // 성공했을 때
 
     if (!passwordValue.equals(passwordCheckValue)) {
-      JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "Message", JOptionPane.ERROR_MESSAGE);
+      JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "비밀번호확인", JOptionPane.ERROR_MESSAGE);
       return;
     }
 
     int result = memberRepository.insertMember(new InsertMember(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null));
     if (result == 0) {
-      JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "Message", JOptionPane.ERROR_MESSAGE);
+      JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "아이디변경", JOptionPane.ERROR_MESSAGE);
       return;
     }
+
+    JOptionPane.showMessageDialog(null, idValue + "님 환영합니다.", "환영", JOptionPane.INFORMATION_MESSAGE);
+
 
     loginFormUI.setVisible(true);
     registerUserUI.setVisible(false);

@@ -30,7 +30,8 @@ public class HeaderEvent implements MouseListener {
   @Override
   public void mousePressed(MouseEvent e) {
     String type = ((JLabel) e.getSource()).getText();
-    if (!type.equals("뒤로가기")) {
+    System.out.println(type + " 로그아웃");
+    if (!type.equals("뒤로가기") && !type.equals("로그아웃")) {
       new MemberInfoUI(member);
     }
   }
