@@ -14,7 +14,7 @@ public class BoardEvent extends KeyAdapter implements MouseListener {
   private BoardRepository boardRepository;
   private JTextField textSearch;
   private JTable table;
-  DefaultTableModel model;
+  private DefaultTableModel model;
 
   public BoardEvent(JTextField textSearch, JTable table, DefaultTableModel model) {
     if (boardRepository == null) {
@@ -63,8 +63,6 @@ public class BoardEvent extends KeyAdapter implements MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    new WriteUI();
-
     int clickTextBox = e.getClickCount();
     if (clickTextBox >= 1) {
       textSearch.setText("");

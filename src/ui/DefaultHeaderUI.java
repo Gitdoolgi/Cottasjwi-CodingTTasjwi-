@@ -27,7 +27,6 @@ public class DefaultHeaderUI extends JPanel {
     }
 
     setBounds(0, 0, 400, 65);
-    setBorder(BorderFactory.createLineBorder(Color.black));
     setLayout(null);
 
     JLabel backImageBtn = new JLabel("뒤로가기");

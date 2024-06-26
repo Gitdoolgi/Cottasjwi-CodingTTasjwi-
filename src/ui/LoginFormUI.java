@@ -3,6 +3,7 @@ package ui;
 import domain.SelectMember;
 import event.LoginEvent;
 import repository.MemberRepository;
+import style.ColorSet;
 
 import javax.swing.*;
 import java.awt.*;
@@ -96,9 +97,17 @@ public class LoginFormUI extends JFrame {
     defaultHeaderUI = new DefaultHeaderUI("first", this, null, null);
     add(defaultHeaderUI);
 
+    defaultHeaderUI.setBackground(ColorSet.HEADER);
+    cp.setBackground(ColorSet.BACKGROUND);
+
     //버튼, 입력
     cp.add(idLabel);
     idLabel.setBounds(80, 285, 70, 30);
+
+    idLabel.setForeground(new Color(0, 0, 0));
+    pwdLabel.setForeground(new Color(0, 0, 0));
+    registerButton.setBackground(new Color(255, 255, 255));
+    loginButton.setBackground(new Color(255, 255, 255));
 
     cp.add(idField);
     idField.setBounds(160, 285, 160, 30);

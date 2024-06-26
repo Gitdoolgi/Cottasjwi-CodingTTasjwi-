@@ -1219,7 +1219,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="509" parent="1" name="tspoon">
-      <LastIntrospectionLocalTimestamp>2024-06-26.04:45:59</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-26.07:57:22</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <user id="510" parent="1" name="ttasjwi"/>
@@ -1256,7 +1256,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
     <column id="519" parent="511" name="BOARD_NO">
-      <AutoIncrement>50</AutoIncrement>
+      <AutoIncrement>63</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1489,7 +1489,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="567" parent="516" name="REPLY_NO">
-      <AutoIncrement>17</AutoIncrement>
+      <AutoIncrement>19</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

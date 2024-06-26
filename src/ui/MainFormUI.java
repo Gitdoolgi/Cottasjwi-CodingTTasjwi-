@@ -45,18 +45,20 @@ public class MainFormUI extends JFrame {
       new BoardUI(this, userInformation);
     });
 
+
     cp.add(classButton); //학습현황 버튼
     classButton.setBounds(200, 400, 150, 50);
     classButton.addActionListener(e -> {
       setVisible(false);
       new StatusUI(this, userInformation);
     });
-    //좌표
+
     setUI();
   }
 
   //버튼 액션
   void setUI() {
+
     setTitle("Tspoon");
     setSize(400, 710);
     setResizable(false);

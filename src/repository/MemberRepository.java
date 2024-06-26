@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -127,4 +128,42 @@ public class MemberRepository {
   }
 
 
+  public int updateMember(String tspoonId, String getPassword, String getPhoneNum, String getAddress) {
+    PreparedStatement pstmt = null;
+    int result = 0;
+    StringBuilder sql = new StringBuilder();
+    sql.append("update tspoon_member set ");
+
+    if (!getPassword.isBlank()) {
+      sql.append("PASSWORD = \'");
+      sql.append(getPassword);
+      sql.append("\', ");
+    }
+
+    if (!getPhoneNum.isBlank()) {
+      sql.append("PHONE_NUM = \'");
+      sql.append(getPhoneNum);
+      sql.append("\', ");
+    }
+
+    if (!getAddress.isBlank()) {
+      sql.append("ADDRESS = \'");
+      sql.append(getAddress);
+    }
+
+    sql.append("\' where ID = \'");
+    sql.append(tspoonId);
+    sql.append("\'");
+    try {
+      pstmt = con.prepareStatement(sql.toString());
+      result = pstmt.executeUpdate();
+
+      if (result > 0) {
+        con.commit();
+      }
+    } catch (SQLException se) {
+      se.printStackTrace();
+    }
+    return result;
+  }
 }

@@ -4,6 +4,8 @@ import domain.SelectMember;
 import event.MemberUpdateEvent;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 public class MemberUpdateUI extends JFrame {
@@ -14,6 +16,9 @@ public class MemberUpdateUI extends JFrame {
   private JPasswordField passwordField;
   private JTextField textField_PN, textField_ADDRESS;
   private SelectMember member;
+
+  private List<JTextField> textFieldList;
+
   Color c1 = new Color(139, 73, 39);//갈
   Color c13 = new Color(251, 172, 204);
   Color c14 = new Color(223, 143, 174);//찐찐핑
@@ -23,6 +28,7 @@ public class MemberUpdateUI extends JFrame {
 
   public MemberUpdateUI(SelectMember member) {
     this.member = member;
+    textFieldList = new ArrayList<>();
   }
 
   public void init() {
@@ -105,7 +111,10 @@ public class MemberUpdateUI extends JFrame {
     cp2.add(bUpdateCheck, gbc);
     bUpdateCheck.setBackground(c16);
 
-    bUpdateCheck.addActionListener(new MemberUpdateEvent(this, member));
+    textFieldList.add(passwordField);
+    textFieldList.add(textField_PN);
+    textFieldList.add(textField_ADDRESS);
+    bUpdateCheck.addActionListener(new MemberUpdateEvent(this, member, textFieldList));
 
     setUI();
   }

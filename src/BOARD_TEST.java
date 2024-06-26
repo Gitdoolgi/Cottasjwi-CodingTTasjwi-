@@ -30,6 +30,7 @@ import java.awt.event.MouseAdapter;
 
 public class BOARD_TEST extends JFrame implements ActionListener {
 
+  private static final long serialVersionUID = 1L;
   private JPanel boardPanel;
   private JTextField textSearch;
   private JTable table;
@@ -107,7 +108,6 @@ public class BOARD_TEST extends JFrame implements ActionListener {
           textSearch.setText("");
           clickTextBox = 0;
         }
-
       }
     });
 
@@ -144,7 +144,6 @@ public class BOARD_TEST extends JFrame implements ActionListener {
         }
 
       }
-
     });
 
     JButton writeButton = new JButton("글쓰기");
