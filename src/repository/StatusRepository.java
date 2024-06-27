@@ -71,6 +71,26 @@ public class StatusRepository {
     }
   }
 
+  public String findChildName(int tspoonNo) {
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    String sql = "select mm.name from milk_member mm left join tspoon_member tm on mm.TSPOON_NO = tm.TSPOON_NO where tm.TSPOON_NO = ? ";
+
+    String result = "";
+    try {
+      pstmt = con.prepareStatement(sql);
+      pstmt.setInt(1, tspoonNo);
+      rs = pstmt.executeQuery();
+
+      if (rs.next()) {
+        result = rs.getString(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return result;
+  }
+
   public List<Study> select(String milkid, String box1, String box2, int idx) {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
@@ -91,7 +111,6 @@ public class StatusRepository {
         int progress = rs.getInt(8);
         Date sdate = rs.getDate(9);
         Date edate = rs.getDate(10);
-
         al.add(new Study(name, grade, teacher, subject, cname, mcnt, ccnt, progress, sdate, edate));
       }
     } catch (SQLException se) {

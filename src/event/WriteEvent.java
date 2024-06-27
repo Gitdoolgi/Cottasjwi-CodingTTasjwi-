@@ -49,7 +49,7 @@ public class WriteEvent extends MouseAdapter {
           JOptionPane.showMessageDialog(null, "제목과 내용이 비어있으면 안됩니다.", "다시 입력하세요", JOptionPane.WARNING_MESSAGE);
           return;
         } else {
-          boardRepository.insertArticle(new InsertBoard(title, article, 0, member.getTspoon_no()));
+          boardRepository.insertArticle(new InsertBoard(title, article, 0, member.getTspoonNo()));
           JOptionPane.showMessageDialog(null, "등록되었습니다");
           writeUI.setVisible(false);
         }

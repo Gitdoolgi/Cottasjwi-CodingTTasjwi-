@@ -45,7 +45,7 @@ public class MemberRepository {
         Optional<SelectMilktMember> selectMilktMember = checkMilktMember(tspoonNo);
 
         if (!selectMilktMember.isEmpty()) {
-          selectMember.setMilktId(selectMilktMember.get().getMilktMemberName());
+          selectMember.setMilktId(selectMilktMember.get().getMilktid());
         }
       } else {
         logger.severe("일치하는 회원이 없습니다.");

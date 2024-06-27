@@ -2,6 +2,7 @@ package ui;
 
 import domain.SelectMember;
 import event.MemberUpdateEvent;
+import style.ColorSet;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,12 +20,6 @@ public class MemberUpdateUI extends JFrame {
 
   private List<JTextField> textFieldList;
 
-  Color c1 = new Color(139, 73, 39);//갈
-  Color c13 = new Color(251, 172, 204);
-  Color c14 = new Color(223, 143, 174);//찐찐핑
-  Color c15 = new Color(141, 198, 129);//연두
-  Color c16 = new Color(219, 242, 201);//연연두
-  Color c18 = new Color(204, 228, 251);//하늘
 
   public MemberUpdateUI(SelectMember member) {
     this.member = member;
@@ -44,8 +39,8 @@ public class MemberUpdateUI extends JFrame {
     label_Edit_Main.setHorizontalAlignment(SwingConstants.CENTER);
     label_Edit_Main.setVerticalAlignment(SwingConstants.BOTTOM);
     cp2.add(label_Edit_Main, gbc);
-    cp2.setBackground(c18);
-    cp2.setForeground(c1);
+    cp2.setBackground(ColorSet.BACKGROUND);
+    //cp2.setForeground(c1);
 
     gbc.gridx = 0;
     gbc.gridy = 2;
@@ -55,7 +50,7 @@ public class MemberUpdateUI extends JFrame {
     label_PWD = new JLabel();
     label_PWD.setText("새 비밀번호 :  ");
     cp2.add(label_PWD, gbc);
-    label_PWD.setForeground(c1);
+    //label_PWD.setForeground(c1);
 
     gbc.gridx = 1;
     gbc.gridy = 2;
@@ -64,7 +59,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.insets = new Insets(10, 5, 20, 20);
     passwordField = new JPasswordField(14);
     cp2.add(passwordField, gbc);
-    passwordField.setForeground(c14);
+    //passwordField.setForeground(c14);
 
     gbc.gridx = 0;
     gbc.gridy = 3;
@@ -74,7 +69,7 @@ public class MemberUpdateUI extends JFrame {
     label_PN = new JLabel();
     label_PN.setText("새 전화번호 :  ");
     cp2.add(label_PN, gbc);
-    label_PN.setForeground(c1);
+    //label_PN.setForeground(c1);
 
     gbc.gridx = 1;
     gbc.gridy = 3;
@@ -92,7 +87,7 @@ public class MemberUpdateUI extends JFrame {
     label_ADDRESS = new JLabel();
     label_ADDRESS.setText("새 주소 :  ");
     cp2.add(label_ADDRESS, gbc);
-    label_ADDRESS.setForeground(c1);
+    //label_ADDRESS.setForeground(c1);
 
     gbc.gridx = 1;
     gbc.gridy = 4;
@@ -109,7 +104,7 @@ public class MemberUpdateUI extends JFrame {
     gbc.insets = new Insets(10, 5, 20, 20);
     bUpdateCheck = new JButton("수정하기");
     cp2.add(bUpdateCheck, gbc);
-    bUpdateCheck.setBackground(c16);
+    //bUpdateCheck.setBackground(c16);
 
     textFieldList.add(passwordField);
     textFieldList.add(textField_PN);
@@ -122,7 +117,10 @@ public class MemberUpdateUI extends JFrame {
   private void setUI() {
     setTitle("내 정보 수정");
     setSize(315, 560);
-    setLocationRelativeTo(null);
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int centerX = (screenSize.width - getSize().width) / 2;
+    int centerY = (screenSize.height - getSize().height) / 2;
+    setLocation(centerX + 390, centerY - 23);
     setVisible(true);
     setResizable(false);
     setDefaultCloseOperation(DISPOSE_ON_CLOSE);

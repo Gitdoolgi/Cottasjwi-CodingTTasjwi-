@@ -33,40 +33,49 @@ public class DefaultHeaderUI extends JPanel {
     backImageBtn.setBounds(25, 23, 25, 20);
     backImageBtn.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
 
+    JLabel centerLabel = new JLabel();
+    ImageIcon logo = imageSetSize("icon/logo1.png", 50, 50);
+    centerLabel.setIcon(logo);
+    centerLabel.setBounds(173, 0, 55, 65);
+
     if (status.equals("first")) {
-      JLabel centerLabel = new JLabel("TSPOON");
-      centerLabel.setBounds(173, 23, 55, 20);
       add(centerLabel);
     }
 
     if (status.equals("register")) {
       add(backImageBtn);
-      JLabel centerLabel = new JLabel("TSPOON");
-      centerLabel.setBounds(173, 23, 55, 20);
       add(centerLabel);
     }
 
     if (status.equals("login-main")) {
-      JLabel centerLabel = new JLabel("TSPOON");
-      centerLabel.setBounds(173, 23, 55, 20);
       add(centerLabel);
 
       JLabel userLabel = new JLabel(member.getName());
       userLabel.setBounds(275, 23, 50, 20);
+
+      ImageIcon userIcon = imageSetSize("icon/user.png", 40, 40);
+      userLabel.setIcon(userIcon);
+      userLabel.setBounds(280, 10, 40, 40);
+
+
       add(userLabel);
       userLabel.addMouseListener(new HeaderEvent(currentObj, null, member));
 
-      JLabel logoutLabel = new JLabel("로그아웃");
+      JLabel logoutLabel = new JLabel("asdasd");
       logoutLabel.setBounds(327, 23, 55, 20);
       logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
+
+      ImageIcon logoutIcon = imageSetSize("icon/logoutS.png", 40, 40);
+      logoutLabel.setIcon(logoutIcon);
+      logoutLabel.setBounds(340, 10, 40, 40);
+
+
       add(logoutLabel);
     }
 
     if (status.equals("login")) {
       add(backImageBtn);
 
-      JLabel centerLabel = new JLabel("TSPOON");
-      centerLabel.setBounds(173, 23, 55, 20);
       add(centerLabel);
 
       JLabel userLabel = new JLabel(member.getName());
@@ -79,5 +88,11 @@ public class DefaultHeaderUI extends JPanel {
       logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
       add(logoutLabel);
     }
+  }
+
+  private ImageIcon imageSetSize(String imagePath, int w, int h) {
+    Image originImage = new ImageIcon("./images/" + imagePath).getImage();
+    Image resizeBackImage = originImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
+    return new ImageIcon(resizeBackImage);
   }
 }

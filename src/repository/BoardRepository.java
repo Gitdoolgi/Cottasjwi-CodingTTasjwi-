@@ -45,7 +45,7 @@ public class BoardRepository {
       pstmt = con.prepareStatement(sql);
       rs = pstmt.executeQuery();
       while (rs.next()) {
-        model.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
+        model.addRow(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
       }
     } catch (SQLException se) {
       se.printStackTrace();

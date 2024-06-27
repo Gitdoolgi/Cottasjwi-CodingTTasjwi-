@@ -132,7 +132,7 @@ public class ArticleUI extends JFrame {
 
     int tspoonNo2 = checkOwner(boardNo);
 
-    if (member.getTspoon_no() == tspoonNo2) {
+    if (member.getTspoonNo() == tspoonNo2) {
       JButton deleteButton = new JButton("삭제"); // 로그인 비교해서 button의 setVisible의 값을 바꿔야함
       deleteButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
@@ -266,7 +266,7 @@ public class ArticleUI extends JFrame {
     insertReply = textReply.getText();
     insertReply = "\"" + insertReply + "\"";
 
-    String sqlInReply = "insert into REPLY(CONTENT,REPLY_DATE,REPLY_YN,BOARD_NO,TSPOON_NO) values (" + insertReply + ",now(),0," + boardNo + "," + member.getTspoon_no() + ")"; // 꼭 수정 요망
+    String sqlInReply = "insert into REPLY(CONTENT,REPLY_DATE,REPLY_YN,BOARD_NO,TSPOON_NO) values (" + insertReply + ",now(),0," + boardNo + "," + member.getTspoonNo() + ")"; // 꼭 수정 요망
     try {
       pstmtInsRe = con.prepareStatement(sqlInReply);
       int result = pstmtInsRe.executeUpdate();
@@ -282,7 +282,7 @@ public class ArticleUI extends JFrame {
   }
 
   void deleteReply() {
-    String deleteReSql = "update REPLY set REPLY_YN = 1 where REPLY_NO=" + replyNoData + " and TSPOON_NO=" + member.getTspoon_no();
+    String deleteReSql = "update REPLY set REPLY_YN = 1 where REPLY_NO=" + replyNoData + " and TSPOON_NO=" + member.getTspoonNo();
 
     try {
       pstmtDelReply = con.prepareStatement(deleteReSql);

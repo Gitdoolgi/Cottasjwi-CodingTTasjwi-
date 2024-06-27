@@ -40,8 +40,14 @@ public class MainFormUI extends JFrame {
     cp.add(classButton); //학습현황 버튼
     classButton.setBounds(200, 400, 150, 50);
     classButton.addActionListener(e -> {
-      setVisible(false);
-      new StatusUI(this, userInformation);
+      if (userInformation.getMilktId() != null) {
+        setVisible(false);
+        System.out.println(userInformation + " main form");
+        new StatusUI(this, userInformation);
+      } else {
+        JOptionPane.showMessageDialog(null, "자식을 등록해주세요");
+
+      }
     });
 
     setUI();

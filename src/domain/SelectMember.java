@@ -3,7 +3,7 @@ package domain;
 import java.util.Date;
 
 public class SelectMember {
-  private int tspoon_no;
+  private int tspoonNo;
   private String id;
   private String name;
   private String phoneNum;
@@ -11,8 +11,8 @@ public class SelectMember {
   private Date joinDate;
   private String milktId;
 
-  public SelectMember(int tspoon_no, String id, String name, String phoneNum, String address, Date joinDate) {
-    this.tspoon_no = tspoon_no;
+  public SelectMember(int tspoonNo, String id, String name, String phoneNum, String address, Date joinDate) {
+    this.tspoonNo = tspoonNo;
     this.id = id;
     this.name = name;
     this.phoneNum = phoneNum;
@@ -20,8 +20,8 @@ public class SelectMember {
     this.joinDate = joinDate;
   }
 
-  public int getTspoon_no() {
-    return tspoon_no;
+  public int getTspoonNo() {
+    return tspoonNo;
   }
 
   public String getId() {
@@ -50,5 +50,10 @@ public class SelectMember {
 
   public String getMilktId() {
     return milktId;
+  }
+
+  @Override
+  public String toString() {
+    return "name: " + name + ", milktId: " + milktId;
   }
 }

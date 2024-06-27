@@ -60,8 +60,17 @@ public class StatusUI extends JFrame {
     box2 = new JComboBox(desc);
     box3 = new JComboBox(sub);
     box4 = new JComboBox(desc);
-    name = new JLabel(member.getMilktId());
-    name2 = new JLabel(member.getMilktId());
+
+    // 무조건 자식 찾기
+    String childName = statusRepository.findChildName(member.getTspoonNo());
+    if (childName != null) {
+      name = new JLabel(childName);
+      name2 = new JLabel(childName);
+    } else {
+      System.out.println("자식이 강의 ㄴㄴ");
+      /*name = new JLabel("수강중인 강의가 없습니다.");
+      name2 = new JLabel("수강중인 강의가 없습니다.");*/
+    }
 
     tab.setBorder(BorderFactory.createEmptyBorder(65, 0, 0, 0));
 
@@ -69,10 +78,11 @@ public class StatusUI extends JFrame {
     DefaultHeaderUI defaultHeaderUI = new DefaultHeaderUI("login", this, mainFormUI, member);
     add(defaultHeaderUI);
 
-    name.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-    name2.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-    name.setFont(new Font("Serif", Font.BOLD, 20));
-    name2.setFont(new Font("Serif", Font.BOLD, 20));
+    /*name.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+    name2.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));*/
+
+    /*name.setFont(new Font("Serif", Font.BOLD, 20));
+    name2.setFont(new Font("Serif", Font.BOLD, 20));*/
     tab.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
@@ -81,7 +91,10 @@ public class StatusUI extends JFrame {
     });
 
     if (statusEvent.result == null) {
-      statusEvent.result = statusRepository.select(member.getMilktId(), sub[0], desc[0], idx);
+      List<Study> select = statusRepository.select(member.getMilktId(), sub[0], desc[0], idx);
+      statusEvent.result = select;
+      System.out.println(statusEvent.result.size());
+      System.out.println(select.size());
     }
 
     box1.addActionListener(statusEvent);
