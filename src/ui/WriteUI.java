@@ -36,7 +36,7 @@ public class WriteUI extends JFrame {
     JButton registerArticle = new JButton("게시글 등록");
     registerArticle.setBounds(253, 543, 119, 39);
     contentPane.add(registerArticle);
-    registerArticle.addMouseListener(new WriteEvent(member, registerArticle, articleTitle, articleDetail));
+    registerArticle.addMouseListener(new WriteEvent(this, member, registerArticle, articleTitle, articleDetail));
 
     tagBox = new JComboBox<String>(tagName);
     tagBox.setBounds(12, 85, 100, 30);

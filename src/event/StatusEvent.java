@@ -17,10 +17,10 @@ public class StatusEvent implements ActionListener {
   private int no1, no2, no3, no4;
   private SelectMember member;
 
-  public StatusEvent(StatusUI statusUI, SelectMember member) {
+  public StatusEvent(StatusUI statusUI, SelectMember member, StatusRepository statusRepository) {
     this.statusUI = statusUI;
     this.member = member;
-    this.statusRepository = new StatusRepository();
+    this.statusRepository = statusRepository;
   }
 
   @Override

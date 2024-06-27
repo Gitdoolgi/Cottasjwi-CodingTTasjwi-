@@ -133,8 +133,6 @@ public class ArticleUI extends JFrame {
     int tspoonNo2 = checkOwner(boardNo);
 
     if (member.getTspoon_no() == tspoonNo2) {
-
-
       JButton deleteButton = new JButton("삭제"); // 로그인 비교해서 button의 setVisible의 값을 바꿔야함
       deleteButton.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {

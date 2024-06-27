@@ -7,10 +7,11 @@
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/InsertMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/InsertMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/RegisterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/StatusEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/StatusEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/WriteEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/WriteEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ArticleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ArticleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/StatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StatusUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/WriteUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/WriteUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,35 +45,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.Runner.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/java-swing-project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Runner.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java-swing-project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Runner" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Runner" />
@@ -115,7 +116,8 @@
       <workItem from="1719363343304" duration="24702000" />
       <workItem from="1719394990641" duration="7223000" />
       <workItem from="1719446044122" duration="909000" />
-      <workItem from="1719447287013" duration="4766000" />
+      <workItem from="1719447287013" duration="4943000" />
+      <workItem from="1719452263083" duration="1621000" />
     </task>
     <servers />
   </component>

@@ -6,16 +6,19 @@ import event.StatusEvent;
 import repository.StatusRepository;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
+
 public class StatusUI extends JFrame {
   private Container cp;
-  private JTabbedPane pane;
-  protected JPanel p1, pa, pb, p2, pc, pd;
+  private JTabbedPane tab;
+  public JPanel pane, pane2, p1, pa, pb, p2, pc, pd;
   public JComboBox box1, box2, box3, box4;
   public JButton btn;
   public String[] sub = {"영역 전체", "국어", "수학", "영어", "과학", "사회"};
@@ -24,30 +27,32 @@ public class StatusUI extends JFrame {
           name2, label8, label9, label10, label11, label12, label13;
   public int idx;
 
+  private MainFormUI mainFormUI;
+  private SelectMember member;
+
   private Color color = new Color(235, 241, 222);
   private Color color2 = new Color(214, 231, 218);
   private Color color3 = new Color(191, 209, 163);
   private Color color4 = new Color(120, 180, 223);
   private Color color5 = new Color(218, 135, 203);
+  private Color color6 = new Color(194, 224, 227);
   private StatusRepository statusRepository;
   private StatusEvent statusEvent;
 
-  private MainFormUI previousObj;
-
-  private SelectMember member;
-
-  public StatusUI(MainFormUI mainForm, SelectMember member) {
-    previousObj = mainForm;
-    statusRepository = new StatusRepository();
+  public StatusUI(MainFormUI mainFormUI, SelectMember member) {
+    this.mainFormUI = mainFormUI;
     this.member = member;
-    this.statusEvent = new StatusEvent(this, member);
+    this.statusRepository = new StatusRepository();
+    this.statusEvent = new StatusEvent(this, member, statusRepository);
     init();
   }
 
   void init() {
     cp = getContentPane();
-    pane = new JTabbedPane();
-    p1 = new JPanel(new GridLayout(6, 2));
+    tab = new JTabbedPane();
+    pane = new JPanel(new BorderLayout());
+    pane2 = new JPanel(new BorderLayout());
+    p1 = new JPanel(new GridLayout(6, 1));
     p2 = new JPanel(new GridLayout(6, 2)); //Tab2 전체 레이아웃(수정전)
     pa = new JPanel();
     pc = new JPanel();
@@ -58,14 +63,20 @@ public class StatusUI extends JFrame {
     name = new JLabel(member.getMilktId());
     name2 = new JLabel(member.getMilktId());
 
-    name.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
-    name2.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 10));
+    tab.setBorder(BorderFactory.createEmptyBorder(65, 0, 0, 0));
+
+    // 헤더
+    DefaultHeaderUI defaultHeaderUI = new DefaultHeaderUI("login", this, mainFormUI, member);
+    add(defaultHeaderUI);
+
+    name.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+    name2.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     name.setFont(new Font("Serif", Font.BOLD, 20));
     name2.setFont(new Font("Serif", Font.BOLD, 20));
-    pane.addMouseListener(new MouseAdapter() {
+    tab.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
-        idx = pane.getSelectedIndex();
+        idx = tab.getSelectedIndex();
       }
     });
 
@@ -85,10 +96,33 @@ public class StatusUI extends JFrame {
       updateUI2(statusRepository.select(member.getMilktId(), sub[0], desc[0], 1));
     }
 
-    pane.addTab("       수강중       ", p1);
-    pane.addTab("  수강 완료 / 취소  ", p2);
+    JScrollPane sp = new JScrollPane(p1);
+    sp.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+      @Override
+      public void configureScrollBarColors() {
+        thumbColor = color6;
+        trackColor = Color.white;
+      }
+    });
+    JScrollPane sp2 = new JScrollPane(p2);
+    sp2.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+      @Override
+      public void configureScrollBarColors() {
+        thumbColor = color6;
+        trackColor = Color.white;
+      }
+    });
 
-    cp.add(pane);
+    pane.add(pa, BorderLayout.NORTH);
+    pane.add(sp, BorderLayout.CENTER);
+
+    pane2.add(pc, BorderLayout.NORTH);
+    pane2.add(sp2, BorderLayout.CENTER);
+
+    tab.addTab("       수강중       ", pane);
+    tab.addTab("  수강 완료 / 취소  ", pane2);
+
+    cp.add(tab);
 
     pa.setBackground(color);
     p1.setBackground(color);
@@ -100,10 +134,10 @@ public class StatusUI extends JFrame {
   public void updateUI(List<Study> studies) {
     p1.removeAll();
 
-    p1.add(name);
+    pa.removeAll();
+    pa.add(name);
     pa.add(box1);
     pa.add(box2);
-    p1.add(pa);
 
     for (Study s : studies) {
       pb = new JPanel(new GridLayout(4, 2)); //수강 한 묶음
@@ -144,16 +178,17 @@ public class StatusUI extends JFrame {
       btn.setBackground(color3);
       btn.setBorder(BorderFactory.createLineBorder(color3));
     }
+    p1.revalidate();
     p1.repaint();
   }
 
   public void updateUI2(List<Study> studies) {
     p2.removeAll();
 
-    p2.add(name2);
+    pc.removeAll();
+    pc.add(name2);
     pc.add(box3);
     pc.add(box4);
-    p2.add(pc);
 
     for (Study s : studies) {
       pd = new JPanel(new GridLayout(4, 2)); //수강 한 묶음
@@ -185,12 +220,12 @@ public class StatusUI extends JFrame {
     p2.repaint();
   }
 
+
   void setUi() {
     setVisible(true);
     setSize(400, 710);
     setLocation(200, 100);
     setResizable(false);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLocationRelativeTo(null);
   }
-
 }

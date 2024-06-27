@@ -17,13 +17,15 @@ public class WriteEvent extends MouseAdapter {
   private JTextField articleTitle;
   private JTextArea articleDetail;
   private SelectMember member;
+  private WriteUI writeUI;
 
   public WriteEvent(SelectMember member, JButton button) {
     this.member = member;
     this.button = button;
   }
 
-  public WriteEvent(SelectMember member, JButton button, JTextField articleTitle, JTextArea articleDetail) {
+  public WriteEvent(WriteUI writeUI, SelectMember member, JButton button, JTextField articleTitle, JTextArea articleDetail) {
+    this.writeUI = writeUI;
     this.member = member;
     this.button = button;
     this.articleTitle = articleTitle;
@@ -49,6 +51,7 @@ public class WriteEvent extends MouseAdapter {
         } else {
           boardRepository.insertArticle(new InsertBoard(title, article, 0, member.getTspoon_no()));
           JOptionPane.showMessageDialog(null, "등록되었습니다");
+          writeUI.setVisible(false);
         }
       }
 
