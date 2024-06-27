@@ -13,6 +13,7 @@ public class WriteUI extends JFrame {
   private JComboBox<String> tagBox;
   private String tagName[] = {"자유", "질문", "정보", "수업", "공지"};
 
+
   private SelectMember member;
 
   public WriteUI(SelectMember member) {

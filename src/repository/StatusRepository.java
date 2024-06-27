@@ -16,7 +16,7 @@ public class StatusRepository {
   private Connection con = MariaConnection.getInstance().getConnection();
 
   String sql = "SELECT x.name, x.grade, x.teacher, x.subject, x.class_name, x.progress\n"
-          + ",x.class_count, x.progress_rate, x.start_date, x.end_date\n"
+          + "\t\t,x.class_count, x.progress_rate, x.start_date, x.end_date\n"
           + "from(\n"
           + "SELECT mm.name name\n"
           + "    ,cl.grade grade\n"
@@ -28,6 +28,8 @@ public class StatusRepository {
           + "    ,truncate(max(ml.progress)/cl.class_count,2) *100 progress_rate\n"
           + "    ,mc.myclass_start_date start_date\n"
           + "    ,mc.myclass_end_date end_date\n"
+          + "    ,mc.myclass_yn myclass_yn\n"
+          + "    ,mc.complete complete\n"
           + "  FROM milk_member mm\n"
           + "  JOIN myclass mc\n"
           + "    ON mm.milktid = mc.milktid\n"
@@ -41,25 +43,38 @@ public class StatusRepository {
           + "WHERE 1=1";
 
 
-  public void addOption(String subject) {
-    if ("국어".equals(subject)) {
+  String sql2 = sql;
+
+  public void addOption(String sub, String desc, int idx) {
+    sql = sql2;
+    if (idx == 0) {
+      sql += " and x.myclass_yn =0"
+              + " and x.complete =0";
+    } else if (idx == 1) {
+      sql += " and x.myclass_yn =1";
+    }
+    if ("국어".equals(sub)) {
       sql += " and x.subject ='국어'";
-    } else if ("수학".equals(subject)) {
+    } else if ("수학".equals(sub)) {
       sql += " and x.subject ='수학'";
-    } else if ("영어".equals(subject)) {
+    } else if ("영어".equals(sub)) {
       sql += " and x.subject ='영어'";
-    } else if ("과학".equals(subject)) {
+    } else if ("과학".equals(sub)) {
       sql += " and x.subject ='과학'";
-    } else if ("사회".equals(subject)) {
+    } else if ("사회".equals(sub)) {
       sql += " and x.subject ='사회'";
-    } else {
+    }
+    if ("최근 수강순".equals(desc)) {
+      sql += " order by x.end_date desc";
+    } else if ("오래된 수강순".equals(desc)) {
+      sql += " order by x.end_date";
     }
   }
 
-  public List<Study> select(String milkid, String box1) {
-    PreparedStatement pstmt;
-    ResultSet rs;
-    addOption(box1);
+  public List<Study> select(String milkid, String box1, String box2, int idx) {
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+    addOption(box1, box2, idx);
     List<Study> al = new ArrayList();
     try {
       pstmt = con.prepareStatement(sql);

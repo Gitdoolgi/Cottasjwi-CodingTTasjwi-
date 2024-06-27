@@ -24,21 +24,12 @@ public class LoginFormUI extends JFrame {
   //로그인,회원가입 버튼
   static final JButton loginButton = new JButton("Login");
   private static final JButton registerButton = new JButton("Register");
-  private static LoginFormUI loginFormUI;
 
   private DefaultHeaderUI defaultHeaderUI;
 
   public LoginFormUI() {
     memberRepository = new MemberRepository();
-    loginFormUI = this;
     init();
-  }
-
-  public static LoginFormUI getLoginForm() {
-    if (loginFormUI == null) {
-      loginFormUI = new LoginFormUI();
-    }
-    return loginFormUI;
   }
 
 
@@ -68,7 +59,7 @@ public class LoginFormUI extends JFrame {
     }
     if (isPasswordMatch(enteredPassword, storedPassword)) {
       showMessage("Login Successful");
-      MainFormUI mainFormUI = MainFormUI.getMainForm(userInformation);
+      MainFormUI mainFormUI = new MainFormUI(this, userInformation);
       idField.setText("");
       pwdField.setText("");
       idField.requestFocus();

@@ -1,39 +1,29 @@
-/*
+package ui;
 
-import java.awt.EventQueue;
+import dbutil.MariaConnection;
+import domain.SelectBoard;
+import domain.SelectMember;
+import event.ArticleEvent;
+import repository.BoardRepository;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Vector;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.SystemColor;
-import java.awt.Font;
-import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.*;
 
-public class WRITE_PANEL extends JFrame {
-
+public class ArticleUI extends JFrame {
   private static final long serialVersionUID = 1L;
+
+  Connection con = MariaConnection.getInstance().getConnection();                  // 여기서부터는 BOARD와 중복되는거라 나중에 지워도 괜찮습니다 pstmt만 다르게 해놨음
+  PreparedStatement pstmt3, pstmt4, pstmtDel, pstmtUpd, pstmtInsRe, pstmtDelReply;
+  ResultSet rsReply, rsArticle;
+  ResultSetMetaData rsmd;
+  int replyNoData = -1;
 
 
   //// GUI관련 선언부
@@ -44,22 +34,20 @@ public class WRITE_PANEL extends JFrame {
   private JTextArea textArticle, textReply;
   private String colReply[] = {"번호", "댓글", "ID", "등록일"};
 
+  int boardNo;
+  SelectMember member;
+
   @SuppressWarnings("serial")
-  public WRITE_PANEL() {
+  public ArticleUI(SelectMember member, int boardNo) {
+    this.member = member;
+    this.boardNo = boardNo;
     replySet = new DefaultTableModel(colReply, 0) {
       public boolean isCellEditable(int r, int c) {
         return (c == 5) ? true : false;
       }
     };
+    setVisible(true);
 
-    try {
-      Class.forName(driver);
-      con = DriverManager.getConnection(url, "ttasjwi", "ttasjwi");
-    } catch (ClassNotFoundException cnfe) {
-      System.out.print("클래스를 찾지 못했습니다");
-    } catch (SQLException se) {
-      System.out.print("연결 실패");
-    }
 
     replyCollection = new JTable(replySet);
     replyCollection.addMouseListener(new MouseAdapter() {
@@ -89,7 +77,6 @@ public class WRITE_PANEL extends JFrame {
     replyCollection.getColumn("ID").setPreferredWidth(20);
     replyCollection.getColumn("등록일").setPreferredWidth(70);
     setResizable(false);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 400, 711);
 
     contentPane = new JPanel();
@@ -142,49 +129,78 @@ public class WRITE_PANEL extends JFrame {
     insertReplyButton.setBounds(275, 605, 97, 23);
     contentPane.add(insertReplyButton);
 
-    JButton deleteButton = new JButton("삭제"); // 로그인 비교해서 button의 setVisible의 값을 바꿔야함
-    deleteButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
-        int choice = -1;
-        if (obj == deleteButton) {
-          choice = JOptionPane.showConfirmDialog(deleteButton, "작성글을 지우시겠습니까?", "작성글 삭제?", JOptionPane.YES_OPTION);
-          if (choice == JOptionPane.YES_OPTION) {
-            deleteArticle(); //다음으로 게시판으로 돌아가는 로직 필요
-            contentPane.setVisible(false);
+
+    int tspoonNo2 = checkOwner(boardNo);
+
+    if (member.getTspoon_no() == tspoonNo2) {
+
+
+      JButton deleteButton = new JButton("삭제"); // 로그인 비교해서 button의 setVisible의 값을 바꿔야함
+      deleteButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          Object obj = e.getSource();
+          int choice = -1;
+          if (obj == deleteButton) {
+            choice = JOptionPane.showConfirmDialog(deleteButton, "작성글을 지우시겠습니까?", "작성글 삭제?", JOptionPane.YES_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+              deleteArticle(); //다음으로 게시판으로 돌아가는 로직 필요
+              setVisible(false);
+            }
           }
         }
-      }
-    });
-    deleteButton.setBounds(166, 233, 97, 23);
-    contentPane.add(deleteButton);
+      });
+      deleteButton.setBounds(166, 233, 97, 23);
+      contentPane.add(deleteButton);
 
-    JButton updateButton = new JButton("수정");
-    updateButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
-        if (obj == updateButton) {
-          updateArticle();
+
+      JButton updateButton = new JButton("수정");
+      updateButton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          Object obj = e.getSource();
+          if (obj == updateButton) {
+            updateArticle();
+          }
         }
-      }
-    });
-    updateButton.setHorizontalTextPosition(SwingConstants.LEFT);
-    updateButton.setBounds(275, 233, 97, 23);
-    contentPane.add(updateButton);
+      });
+      updateButton.setHorizontalTextPosition(SwingConstants.LEFT);
+      updateButton.setBounds(275, 233, 97, 23);
+      contentPane.add(updateButton);
+    }
 
     showArticle();
     selectReply();
 
   }
 
-  int boardNo = 5;
+  private int checkOwner(int boardNo) {
+    String sql = "select tspoon_no from board where board_no = ?";
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
+
+    int tspoonNo = 0;
+    try {
+      pstmt = con.prepareStatement(sql);
+      pstmt.setInt(1, boardNo);
+
+      rs = pstmt.executeQuery();
+      if (rs.next()) {
+        tspoonNo = rs.getInt(1);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return tspoonNo;
+
+  }
+
 
   void showArticle() {
 
-    String sqlArticle = "select ARTICLE,BOARD_NO from BOARD where board_no = 5"; //where board no = x 로 비교
+    String sqlArticle = "select ARTICLE,BOARD_NO from BOARD where board_no = ?"; //where board no = x 로 비교
 
     try {
       pstmt3 = con.prepareStatement(sqlArticle);
+      pstmt3.setInt(1, boardNo);
       rsArticle = pstmt3.executeQuery();
 
       while (rsArticle.next()) {
@@ -194,10 +210,10 @@ public class WRITE_PANEL extends JFrame {
     } catch (SQLException se) {
     } catch (NullPointerException npe) {
     }
+    textArticle.setText(getArticle);
   }
 
   void selectReply() { // 번호, 댓글내용, 아이디 (일단 전체 댓글)
-    //int tspoonNo = 0;
 
     String sqlReply = "select REPLY_NO,CONTENT,ID,REPLY_DATE from reply join tspoon_member using(tspoon_no) where BOARD_NO = " + boardNo + " and REPLY_YN=0 order by REPLY_DATE"; //using 뒤에 board_no = x 로 비교
     try {
@@ -215,9 +231,13 @@ public class WRITE_PANEL extends JFrame {
 
   void deleteArticle() {
     String sqlDel = "update BOARD set BOARD_YN = 1 where BOARD_NO = " + boardNo;
+    System.out.println("delete query > " + sqlDel);
+
     try {
       pstmtDel = con.prepareStatement(sqlDel);
-      pstmtDel.executeUpdate();
+      int result = pstmtDel.executeUpdate();
+
+      if (result > 0) con.commit();
       System.out.println("삭제 성공");
     } catch (SQLException se) {
       System.out.println("삭제 실패");
@@ -234,7 +254,9 @@ public class WRITE_PANEL extends JFrame {
     String sqlUp = "update BOARD set ARTICLE = " + updateText + " where BOARD_NO = " + boardNo;
     try {
       pstmtUpd = con.prepareStatement(sqlUp);
-      pstmtUpd.executeUpdate();
+      int result = pstmtUpd.executeUpdate();
+
+      if (result > 0) con.commit();
     } catch (SQLException se) {
     }
 
@@ -246,14 +268,14 @@ public class WRITE_PANEL extends JFrame {
     insertReply = textReply.getText();
     insertReply = "\"" + insertReply + "\"";
 
-    String sqlInReply = "insert into REPLY(CONTENT,REPLY_DATE,REPLY_YN,BOARD_NO,TSPOON_NO) values (" + insertReply + ",now(),0," + boardNo + "," + tspoonNo + ")"; // 꼭 수정 요망
+    String sqlInReply = "insert into REPLY(CONTENT,REPLY_DATE,REPLY_YN,BOARD_NO,TSPOON_NO) values (" + insertReply + ",now(),0," + boardNo + "," + member.getTspoon_no() + ")"; // 꼭 수정 요망
     try {
       pstmtInsRe = con.prepareStatement(sqlInReply);
-      pstmtInsRe.executeUpdate();
+      int result = pstmtInsRe.executeUpdate();
+      if (result > 0) con.commit();
     } catch (SQLException se) {
     }
 
-    //DefaultTableModel replySet = (DefaultTableModel)replyCollection.getModel();
     replySet.setNumRows(0);
 
     selectReply();
@@ -262,26 +284,14 @@ public class WRITE_PANEL extends JFrame {
   }
 
   void deleteReply() {
-    String deleteReSql = "update REPLY set REPLY_YN = 1 where REPLY_NO=" + replyNoData + " and TSPOON_NO=" + tspoonNo;
+    String deleteReSql = "update REPLY set REPLY_YN = 1 where REPLY_NO=" + replyNoData + " and TSPOON_NO=" + member.getTspoon_no();
 
     try {
       pstmtDelReply = con.prepareStatement(deleteReSql);
-      pstmtDelReply.executeUpdate();
+      int result = pstmtDelReply.executeUpdate();
+
+      if (result > 0) con.commit();
     } catch (SQLException se) {
     }
   }
-
-  public static void main(String[] args) {
-    EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        try {
-          WRITE_PANEL frame = new WRITE_PANEL();
-          frame.setVisible(true);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    });
-  }
 }
-*/

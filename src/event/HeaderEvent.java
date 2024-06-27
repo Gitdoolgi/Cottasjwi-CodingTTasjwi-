@@ -1,6 +1,7 @@
 package event;
 
 import domain.SelectMember;
+import ui.LoginFormUI;
 import ui.MemberInfoUI;
 
 import javax.swing.*;
@@ -9,20 +10,29 @@ import java.awt.event.MouseListener;
 
 public class HeaderEvent implements MouseListener {
   private Object currentObj;
-  private Object previousUiobj;
+  private Object previousObj;
   private SelectMember member;
 
-  public HeaderEvent(Object currentObj, Object previousUiobj, SelectMember member) {
+  public HeaderEvent(Object currentObj, Object previousObj, SelectMember member) {
     this.currentObj = currentObj;
-    this.previousUiobj = previousUiobj;
+    this.previousObj = previousObj;
     this.member = member;
   }
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    if (previousUiobj != null) {
-      ((JFrame) currentObj).setVisible(false);
-      ((JFrame) previousUiobj).setVisible(true);
+    String type = ((JLabel) e.getSource()).getText();
+    JFrame currUI = null;
+    JFrame prevUI = null;
+    if (previousObj != null) {
+      currUI = ((JFrame) currentObj);
+      currUI.setVisible(false);
+      prevUI = ((JFrame) previousObj);
+      prevUI.setVisible(true);
+      if (type.equals("로그아웃")) {
+        currUI.dispose();
+        prevUI.setVisible(true);
+      }
     }
 
   }

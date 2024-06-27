@@ -4,16 +4,13 @@ import domain.SelectMember;
 import event.BoardEvent;
 import event.WriteEvent;
 import repository.BoardRepository;
+import style.ColorSet;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.sql.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BoardUI extends JFrame {
 
@@ -27,10 +24,8 @@ public class BoardUI extends JFrame {
   private String colNames[] = {"글번호", "제목", "글내용", "글쓴이", "작성일"};
   private DefaultTableModel model;
 
-  private MainFormUI mainForm;
 
-  public BoardUI(MainFormUI mainFormUI, SelectMember member) {
-    mainForm = mainFormUI;
+  public BoardUI(LoginFormUI loginForm, SelectMember member) {
     boardRepository = new BoardRepository();
     model = new DefaultTableModel(colNames, 0) {
       public boolean isCellEditable(int r, int c) {
@@ -38,18 +33,18 @@ public class BoardUI extends JFrame {
       }
     };
 
-    //setBounds(100, 100, 400, 710);
     boardPanel = new JPanel();
 
     boardPanelParent = new JPanel();
     boardPanelParent.add(boardPanel);
-    boardPanel.setBounds(10, 65, 400, 665);
+    boardPanel.setBounds(0, 65, 400, 500);
+    boardPanel.setBackground(ColorSet.BACKGROUND);
     boardPanelParent.setLayout(null);
-
     setContentPane(boardPanelParent);
+    boardPanelParent.setBackground(ColorSet.BACKGROUND);
 
     // 헤더 추가
-    defaultHeader = new DefaultHeaderUI("login", this, mainForm, member);
+    defaultHeader = new DefaultHeaderUI("login", this, loginForm, member);
     add(defaultHeader);
 
     textSearch = new JTextField();
@@ -67,26 +62,26 @@ public class BoardUI extends JFrame {
 
 
     scrollPane = new JScrollPane();
-    boardPanel.add(scrollPane);
 
     table = new JTable(model);
     table.setToolTipText("클릭하면 상세 보기");
     scrollPane.setViewportView(table);
+    scrollPane.setPreferredSize(new Dimension(400, 500));
+
+    boardPanel.add(scrollPane);
     table.setSurrendersFocusOnKeystroke(true);
     table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
     boardRepository.selectAllArticle(model);
-
-    table.getColumn("글번호").setPreferredWidth(10);
-    table.getColumn("제목").setPreferredWidth(45);
-    table.getColumn("글내용").setPreferredWidth(100);
-    table.getColumn("글쓴이").setPreferredWidth(20);
-    table.getColumn("작성일").setPreferredWidth(40);
-
+    table.getColumn("글내용").setPreferredWidth(90);
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     textSearch.addKeyListener(new BoardEvent(textSearch, table, model));
+    table.addMouseListener(new BoardEvent(member));
 
     setVisible(true);
     setSize(400, 710);
+    setResizable(false);
+    setLocationRelativeTo(null);
   }
 
 }
