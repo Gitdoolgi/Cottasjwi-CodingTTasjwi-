@@ -28,10 +28,9 @@ public class DefaultHeaderUI extends JPanel {
     setBackground(ColorSet.HEADER);
 
     JLabel backImageBtn = new JLabel("뒤로가기");
-    Image originalBackImage = new ImageIcon("./images/뒤로가기.png").getImage();
-    Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
-    backImageBtn.setIcon(new ImageIcon(resizeBackImage));
-    backImageBtn.setBounds(25, 23, 25, 20);
+    ImageIcon imageIcon = imageSetSize("icon/back2.png", 25, 25);
+    backImageBtn.setIcon(imageIcon);
+    backImageBtn.setBounds(25, 23, 25, 25);
     backImageBtn.addMouseListener(new BackEvent(currentObj, previousObj, member));
 
     JLabel centerLabel = new JLabel();

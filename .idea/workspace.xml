@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dbutil/MariaConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dbutil/MariaConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/SelectMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/SelectMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/MemberInfoEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberInfoEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MemberUpdateEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/StatusRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/ColorSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/ColorSet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginFormUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MainFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainFormUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/StatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StatusUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +126,7 @@
       <workItem from="1719446044122" duration="909000" />
       <workItem from="1719447287013" duration="4943000" />
       <workItem from="1719452263083" duration="27046000" />
-      <workItem from="1719484472506" duration="2702000" />
+      <workItem from="1719484472506" duration="4272000" />
     </task>
     <servers />
   </component>

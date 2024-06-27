@@ -33,43 +33,60 @@ public class MemberInfoUI extends JFrame {
   void init() {
     label_info = new JLabel();
     label_info.setText("☆나의 정보★");
+    label_info.setOpaque(true);
+    label_info.setBackground(ColorSet.SUBTITLE);
     label_info.setHorizontalAlignment(SwingConstants.CENTER);
     label_info.setVerticalAlignment(SwingConstants.BOTTOM);
-    //label_info.setForeground(ColorSet.BACKGROUND);// 색상
+
     label_ID = new JLabel();
+    label_ID.setOpaque(true);
+    label_ID.setBackground(ColorSet.IND1);
     label_ID.setText("♣ 아이디  :  ");
-    //label_ID.setForeground(ColorSet.BACKGROUND);
 
     label_ID1 = new JLabel();
+    label_ID1.setOpaque(true);
+    label_ID1.setBackground(ColorSet.VAL2);
     label_ID1.setText(member.getId());
 
     label_NAME = new JLabel();
+    label_NAME.setOpaque(true);
+    label_NAME.setBackground(ColorSet.IND2);
     label_NAME.setText("♣ 이름  :  ");
-    //label_NAME.setForeground(ColorSet.BACKGROUND);
 
     label_NAME1 = new JLabel();
+    label_NAME1.setOpaque(true);
+    label_NAME1.setBackground(ColorSet.VAL1);
     label_NAME1.setText(member.getName());
 
     label_PN = new JLabel();
+    label_PN.setOpaque(true);
+    label_PN.setBackground(ColorSet.IND1);
     label_PN.setText("♣ 전화번호  :  ");
-    //label_PN.setForeground(ColorSet.BACKGROUND);
 
     label_PN1 = new JLabel();
+    label_PN1.setOpaque(true);
+    label_PN1.setBackground(ColorSet.VAL2);
     label_PN1.setText(member.getPhoneNum());
 
     label_ADDRESS = new JLabel();
+    label_ADDRESS.setOpaque(true);
+    label_ADDRESS.setBackground(ColorSet.IND2);
     label_ADDRESS.setText("♣ 주소 :  ");
-    //label_ADDRESS.setForeground(ColorSet.BACKGROUND);
 
     label_ADDRESS1 = new JLabel();
+    label_ADDRESS1.setOpaque(true);
+    label_ADDRESS1.setBackground(ColorSet.VAL1);
     label_ADDRESS1.setText(member.getAddress());
 
 
     label_JOIN_DATE = new JLabel();
+    label_JOIN_DATE.setOpaque(true);
+    label_JOIN_DATE.setBackground(ColorSet.IND1);
     label_JOIN_DATE.setText("♣ 가입일  :  ");
-    //label_JOIN_DATE.setForeground(ColorSet.BACKGROUND);
 
     label_JOIN_DATE1 = new JLabel();
+    label_JOIN_DATE1.setOpaque(true);
+    label_JOIN_DATE1.setBackground(ColorSet.VAL2);
     Date memberJoinDate = member.getJoinDate();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     String formattedDate = dateFormat.format(memberJoinDate);
@@ -77,14 +94,17 @@ public class MemberInfoUI extends JFrame {
 
 
     label_C_ID = new JLabel();
+    label_C_ID.setOpaque(true);
+    label_C_ID.setBackground(ColorSet.IND2);
     label_C_ID.setText("♣ 자녀 이름  :  ");
-    //label_C_ID.setForeground(ColorSet.BACKGROUND);
 
     label_C_ID1 = new JLabel();
+    label_C_ID1.setOpaque(true);
+    label_C_ID1.setBackground(ColorSet.VAL1);
     String childName = statusRepository.findChildName(member.getTspoonNo());
     label_C_ID1.setText(childName);
 
-    cp.setBackground(ColorSet.BACKGROUND);
+    cp.setBackground(ColorSet.SUBTITLE);
     cp.setLayout(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.fill = GridBagConstraints.BOTH; //X,Y 축 다 채울지 정하기
@@ -98,8 +118,6 @@ public class MemberInfoUI extends JFrame {
     gbc.gridheight = 2;
     cp.add(label_info, gbc);
 
-
-    gbc.insets = new Insets(10, 60, 10, 10);
     //아이디
     gbc.gridx = 0;
     gbc.gridy = 2;
@@ -144,7 +162,6 @@ public class MemberInfoUI extends JFrame {
 
 
     //여기부터 (2열)
-    gbc.insets = new Insets(10, 0, 10, 10);
     //아이디
     gbc.gridx = 1;
     gbc.gridy = 2;
@@ -189,14 +206,10 @@ public class MemberInfoUI extends JFrame {
 
 
     bChildUpdate = new JButton("자녀등록");
-    //bChildUpdate.setBackground(ColorSet.BACKGROUND);
-    //bChildUpdate.setForeground(ColorSet.BACKGROUND);
     bChildUpdate.setPreferredSize(new Dimension(150, 40));
     bChildUpdate.addActionListener(new MemberInfoEvent("bChildUpdate", member));
 
     bMemberUpdate = new JButton("회원정보 수정");
-    //bMemberUpdate.setBackground(ColorSet.BACKGROUND);
-    //bMemberUpdate.setForeground(ColorSet.BACKGROUND);
     bMemberUpdate.setPreferredSize(new Dimension(150, 40));
     bMemberUpdate.addActionListener(new MemberInfoEvent("bMemberUpdate", member));
 
@@ -212,36 +225,6 @@ public class MemberInfoUI extends JFrame {
     gbc.gridwidth = 2;
     gbc.gridheight = 1;
     cp.add(bMemberUpdate, gbc);
-
-    try {
-      InputStream inputStream1 = new BufferedInputStream(new FileInputStream("Jalnan2TTF.ttf"));
-      Font f1 = Font.createFont(Font.TRUETYPE_FONT, inputStream1);
-      bChildUpdate.setFont(f1.deriveFont(Font.PLAIN, 13));
-      bMemberUpdate.setFont(f1.deriveFont(Font.PLAIN, 13));
-      label_info.setFont(f1.deriveFont(Font.PLAIN, 20));
-      label_ID.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_ID1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_NAME.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_NAME1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_PN.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_PN1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_ADDRESS.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_ADDRESS1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_JOIN_DATE.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_JOIN_DATE1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_C_ID.setFont(f1.deriveFont(Font.PLAIN, 15));
-      label_C_ID1.setFont(f1.deriveFont(Font.PLAIN, 15));
-      UIManager.put("OptionPane.background", ColorSet.BACKGROUND);
-      UIManager.put("Panel.background", ColorSet.BACKGROUND);
-      //UIManager.put("OptionPane.messageForeground", ColorSet.BACKGROUND);
-      //UIManager.put("OptionPane.messageFont", f1);
-      //UIManager.put("OptionPane.buttonFont", f1);
-
-      SwingUtilities.updateComponentTreeUI(new JOptionPane());
-
-    } catch (FontFormatException | IOException e) {
-      System.out.println("폰트 설정 안됨");
-    }
 
     setUI();
   }

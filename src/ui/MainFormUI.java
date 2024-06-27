@@ -43,6 +43,7 @@ public class MainFormUI extends JFrame {
     classButton.setBounds(200, 500, 150, 50);
     classButton.addActionListener(e -> {
       if (userInformation.getMilktId() != null) {
+        setVisible(false);
         new StatusUI(this, userInformation);
       } else {
         JOptionPane.showMessageDialog(null, "자식을 등록해주세요");
