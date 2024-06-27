@@ -1,7 +1,6 @@
 package event;
 
 import domain.SelectMember;
-import ui.LoginFormUI;
 import ui.MemberInfoUI;
 
 import javax.swing.*;
@@ -30,19 +29,18 @@ public class HeaderEvent implements MouseListener {
       prevUI = ((JFrame) previousObj);
       prevUI.setVisible(true);
       if (type.equals("로그아웃")) {
-        currUI.dispose();
-        prevUI.setVisible(true);
+        System.exit(0);
+        return;
       }
     }
-
+    if (!type.contains("뒤로가기") && !type.contains("로그아웃")) {
+      new MemberInfoUI(member);
+    }
   }
 
   @Override
   public void mousePressed(MouseEvent e) {
-    String type = ((JLabel) e.getSource()).getText();
-    if (!type.equals("뒤로가기") && !type.equals("로그아웃")) {
-      new MemberInfoUI(member);
-    }
+
   }
 
   @Override

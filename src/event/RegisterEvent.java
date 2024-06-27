@@ -3,7 +3,7 @@ package event;
 import domain.InsertMember;
 import repository.MemberRepository;
 import ui.LoginFormUI;
-import ui.RegisterMemberUI;
+import ui.MemberRegisterUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,16 +14,16 @@ public class RegisterEvent implements ActionListener {
 
   private List<JTextField> textFieldList;
   private MemberRepository memberRepository;
-  private RegisterMemberUI registerMemberUI;
+  private MemberRegisterUI memberRegisterUI;
 
   private LoginFormUI loginFormUI;
   private int radioBtnValue;
 
-  public RegisterEvent(List<JTextField> textFieldList, int radioBtnValue, RegisterMemberUI registerMemberUI, LoginFormUI loginFormUI) {
+  public RegisterEvent(List<JTextField> textFieldList, int radioBtnValue, MemberRegisterUI memberRegisterUI, LoginFormUI loginFormUI) {
     this.textFieldList = textFieldList;
     this.radioBtnValue = radioBtnValue;
     this.memberRepository = new MemberRepository();
-    this.registerMemberUI = registerMemberUI;
+    this.memberRegisterUI = memberRegisterUI;
     this.loginFormUI = loginFormUI;
   }
 
@@ -60,7 +60,7 @@ public class RegisterEvent implements ActionListener {
 
 
     loginFormUI.setVisible(true);
-    registerMemberUI.setVisible(false);
+    memberRegisterUI.setVisible(false);
 
   }
 

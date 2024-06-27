@@ -6,17 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/SelectMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/SelectMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/WriteEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/WriteEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/BoardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ArticleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ArticleUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/뒤로가기.png.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/뒤로가기.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/BtnTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/HeaderEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/HeaderEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/MainEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/MainEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/font/KCC-Ganpan/[Tlab] KCC간판체 가이드라인 20221130.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/BoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BoardUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/LoginFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginFormUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/MainFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainFormUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberInfoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MemberUpdateUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MemberUpdateUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/StatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StatusUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +84,10 @@
       <recent name="D:\java-swing-project\src\style" />
       <recent name="D:\java-swing-project\src\style\font" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\java-swing-project\images\icon" />
+      <recent name="D:\java-swing-project" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Runner" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
@@ -129,7 +132,7 @@
       <workItem from="1719394990641" duration="7223000" />
       <workItem from="1719446044122" duration="909000" />
       <workItem from="1719447287013" duration="4943000" />
-      <workItem from="1719452263083" duration="9275000" />
+      <workItem from="1719452263083" duration="21254000" />
     </task>
     <servers />
   </component>

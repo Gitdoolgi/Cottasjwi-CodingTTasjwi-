@@ -18,9 +18,9 @@ public class LoginFormUI extends JFrame {
   private MemberRepository memberRepository;
   //id, pwd 입력
   private static final JLabel idLabel = new JLabel("ID : ");
-  private static final JTextField idField = new JTextField(10);
+  private JTextField idField;
   private static final JLabel pwdLabel = new JLabel("PWD : ");
-  private static final JPasswordField pwdField = new JPasswordField(10);
+  private JPasswordField pwdField;
   //로그인,회원가입 버튼
   static final JButton loginButton = new JButton("Login");
   private static final JButton registerButton = new JButton("Register");
@@ -28,6 +28,16 @@ public class LoginFormUI extends JFrame {
   private DefaultHeaderUI defaultHeaderUI;
 
   public LoginFormUI() {
+
+    // 폰트
+    UIManager.put("Label.font", new Font("KCC-간판체", Font.PLAIN, 15));
+    UIManager.put("Button.font", new Font("KCC-간판체", Font.PLAIN, 15));
+    UIManager.put("Table.font", new Font("KCC-간판체", Font.PLAIN, 15));
+    UIManager.put("TextField.font", new Font("KCC-간판체", Font.PLAIN, 15));
+    UIManager.put("TextArea.font", new Font("KCC-간판체", Font.PLAIN, 15));
+    UIManager.put("TableHeader.font", new Font("KCC-간판체", Font.PLAIN, 15));
+
+    // 헤더
     memberRepository = new MemberRepository();
     init();
   }
@@ -81,6 +91,9 @@ public class LoginFormUI extends JFrame {
   }
 
   void init() {
+
+    idField = new JTextField(10);
+    pwdField = new JPasswordField(10);
     Container cp = getContentPane();
     cp.setLayout(null);
 
@@ -94,9 +107,8 @@ public class LoginFormUI extends JFrame {
     //버튼, 입력
     cp.add(idLabel);
     idLabel.setBounds(80, 285, 70, 30);
+    //idLabel.setFont(new Font("KCC-간판체", Font.PLAIN, 15));
 
-    idLabel.setForeground(new Color(0, 0, 0));
-    pwdLabel.setForeground(new Color(0, 0, 0));
     registerButton.setBackground(new Color(255, 255, 255));
     loginButton.setBackground(new Color(255, 255, 255));
 
@@ -106,6 +118,7 @@ public class LoginFormUI extends JFrame {
 
     cp.add(pwdLabel);
     pwdLabel.setBounds(80, 330, 70, 30);
+    //pwdLabel.setFont(new Font("KCC-간판체", Font.PLAIN, 15));
 
     cp.add(pwdField);
     pwdField.setBounds(160, 330, 160, 30);
@@ -114,11 +127,13 @@ public class LoginFormUI extends JFrame {
     cp.add(loginButton);
     loginButton.setBounds(80, 375, 115, 30);
     loginButton.addActionListener(e -> login());
+    loginButton.setFont(new Font("KCC-간판체", Font.PLAIN, 15));
 
+    registerButton.setFont(new Font("KCC-간판체", Font.PLAIN, 15));
     cp.add(registerButton);
     registerButton.setBounds(205, 375, 115, 30);
     registerButton.addActionListener(e -> {
-      new RegisterMemberUI(this);
+      new MemberRegisterUI(this);
       setVisible(false);
     });
 

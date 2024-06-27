@@ -1,6 +1,7 @@
 package ui;
 
 import domain.SelectMember;
+import event.BackEvent;
 import event.HeaderEvent;
 import style.ColorSet;
 
@@ -31,7 +32,7 @@ public class DefaultHeaderUI extends JPanel {
     Image resizeBackImage = originalBackImage.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
     backImageBtn.setIcon(new ImageIcon(resizeBackImage));
     backImageBtn.setBounds(25, 23, 25, 20);
-    backImageBtn.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
+    backImageBtn.addMouseListener(new BackEvent(currentObj, previousObj, member));
 
     JLabel centerLabel = new JLabel();
     ImageIcon logo = imageSetSize("icon/logo1.png", 50, 50);
@@ -50,41 +51,40 @@ public class DefaultHeaderUI extends JPanel {
     if (status.equals("login-main")) {
       add(centerLabel);
 
-      JLabel userLabel = new JLabel(member.getName());
-      userLabel.setBounds(275, 23, 50, 20);
-
+      // 유저
+      JLabel userLabel = new JLabel("유저");
       ImageIcon userIcon = imageSetSize("icon/user.png", 40, 40);
       userLabel.setIcon(userIcon);
       userLabel.setBounds(280, 10, 40, 40);
-
-
-      add(userLabel);
       userLabel.addMouseListener(new HeaderEvent(currentObj, null, member));
+      add(userLabel);
 
-      JLabel logoutLabel = new JLabel("asdasd");
-      logoutLabel.setBounds(327, 23, 55, 20);
-      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
-
-      ImageIcon logoutIcon = imageSetSize("icon/logoutS.png", 40, 40);
+      // 로그아웃
+      JLabel logoutLabel = new JLabel("로그아웃");
+      ImageIcon logoutIcon = imageSetSize("icon/logoutM.png", 40, 40);
       logoutLabel.setIcon(logoutIcon);
       logoutLabel.setBounds(340, 10, 40, 40);
-
-
+      logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
       add(logoutLabel);
     }
 
     if (status.equals("login")) {
       add(backImageBtn);
-
       add(centerLabel);
 
-      JLabel userLabel = new JLabel(member.getName());
-      userLabel.setBounds(275, 23, 50, 20);
-      add(userLabel);
+      // 유저
+      JLabel userLabel = new JLabel("유저");
+      ImageIcon userIcon = imageSetSize("icon/user.png", 40, 40);
+      userLabel.setIcon(userIcon);
+      userLabel.setBounds(280, 10, 40, 40);
       userLabel.addMouseListener(new HeaderEvent(currentObj, null, member));
+      add(userLabel);
 
+      // 로그아웃
       JLabel logoutLabel = new JLabel("로그아웃");
-      logoutLabel.setBounds(327, 23, 55, 20);
+      ImageIcon logoutIcon = imageSetSize("icon/logoutM.png", 40, 40);
+      logoutLabel.setIcon(logoutIcon);
+      logoutLabel.setBounds(340, 10, 40, 40);
       logoutLabel.addMouseListener(new HeaderEvent(currentObj, previousObj, member));
       add(logoutLabel);
     }

@@ -25,7 +25,7 @@ public class BoardUI extends JFrame {
   private DefaultTableModel model;
 
 
-  public BoardUI(LoginFormUI loginForm, SelectMember member) {
+  public BoardUI(MainFormUI mainFormUI, LoginFormUI loginForm, SelectMember member) {
     boardRepository = new BoardRepository();
     model = new DefaultTableModel(colNames, 0) {
       public boolean isCellEditable(int r, int c) {
@@ -44,7 +44,7 @@ public class BoardUI extends JFrame {
     boardPanelParent.setBackground(ColorSet.BACKGROUND);
 
     // 헤더 추가
-    defaultHeader = new DefaultHeaderUI("login", this, loginForm, member);
+    defaultHeader = new DefaultHeaderUI("login", this, mainFormUI, member);
     add(defaultHeader);
 
     textSearch = new JTextField();
@@ -73,11 +73,9 @@ public class BoardUI extends JFrame {
     table.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
     boardRepository.selectAllArticle(model);
-    table.getColumn("글번호").setPreferredWidth(40);
-    table.getColumn("제목").setPreferredWidth(200);
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+    table.getColumn("글번호").setPreferredWidth(20);
     table.setRowHeight(50);
-    //table.getColumn("글내용").setPreferredWidth(90);
-    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     textSearch.addKeyListener(new BoardEvent(textSearch, table, model));
     table.addMouseListener(new BoardEvent(member));
 
