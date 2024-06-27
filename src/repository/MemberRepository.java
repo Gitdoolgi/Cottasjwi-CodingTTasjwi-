@@ -84,7 +84,7 @@ public class MemberRepository {
   }
 
   public int insertMember(InsertMember insertMember) {
-    String sql = "insert into tspoon_member(ID, PASSWORD, NAME, PHONE_NUM, ADDRESS, JOIN_DATE) values (?,?,?,?,?,now())";
+    String sql = "insert into tspoon_member(ID, PASSWORD, NAME, PHONE_NUM, ADDRESS, JOIN_DATE, SEX, ROLE) values (?,?,?,?,?,now(), ?, 1)";
     int result = 0;
     try {
       PreparedStatement pstmt = con.prepareStatement(sql);
@@ -93,6 +93,7 @@ public class MemberRepository {
       pstmt.setString(3, insertMember.getName());
       pstmt.setString(4, insertMember.getPhone_num());
       pstmt.setString(5, insertMember.getAddress());
+      pstmt.setInt(6, insertMember.getSex());
 
       result = pstmt.executeUpdate();
       con.commit();

@@ -2,6 +2,7 @@ package ui;
 
 
 import event.RegisterEvent;
+import style.ColorSet;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +21,8 @@ public class RegisterMemberUI extends JFrame {
   private JTextField addressTextField;
   private JTextField phoneNumTextfield;
   private DefaultHeaderUI defaultHeaderUI;
+  private JRadioButton radioButton1;
+  private JRadioButton radioButton2;
 
   private LoginFormUI loginFormUI;
 
@@ -31,21 +34,21 @@ public class RegisterMemberUI extends JFrame {
 
 
     // 로고 패널
-    JPanel logoPanel = new JPanel();
-    logoPanel.setBounds(45, 62, 300, 175);
-    add(logoPanel);
+    //JPanel logoPanel = new JPanel();
+    //logoPanel.setBounds(45, 62, 300, 175);
+    //add(logoPanel);
 
-    Image logo = new ImageIcon("images/티스푼.png").getImage();
-    Image resizeLogo = logo.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
-    JLabel logoLabel = new JLabel(new ImageIcon(resizeLogo));
-    logoPanel.add(logoLabel);
+    //Image logo = new ImageIcon("images/티스푼.png").getImage();
+    //Image resizeLogo = logo.getScaledInstance(300, 200, Image.SCALE_SMOOTH);
+    //JLabel logoLabel = new JLabel(new ImageIcon(resizeLogo));
+    //logoPanel.add(logoLabel);
 
     // 회원가입 패널
     JPanel joinPanel = new JPanel();
-    joinPanel.setBounds(20, 235, 400, 404);
+    joinPanel.setBounds(0, 150, 400, 710);
     joinPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
     joinPanel.setLayout(null);
-    joinPanel.setBackground(new Color(192, 220, 233));
+    joinPanel.setBackground(ColorSet.BACKGROUND);
     add(joinPanel);
 
     // 아이디 라벨, 텍스트필드
@@ -114,9 +117,23 @@ public class RegisterMemberUI extends JFrame {
     addressTextField.setBounds(83, 285, 242, 45);
     joinPanel.add(addressTextField);
 
+    // 성별 체크박스
+    radioButton1 = new JRadioButton("남");
+    radioButton1.setBounds(155, 360, 45, 45);
+    radioButton1.setBackground(ColorSet.BACKGROUND);
+    radioButton2 = new JRadioButton("여");
+    radioButton2.setBounds(200, 360, 45, 45);
+    radioButton2.setBackground(ColorSet.BACKGROUND);
+
+    ButtonGroup btnGroup = new ButtonGroup();
+    btnGroup.add(radioButton1);
+    btnGroup.add(radioButton2);
+    joinPanel.add(radioButton1);
+    joinPanel.add(radioButton2);
+
     // 회원가입 버튼
     JButton joinBtn = new JButton("회원가입");
-    joinBtn.setBounds(130, 359, 110, 35);
+    joinBtn.setBounds(140, 420, 110, 35);
     joinPanel.add(joinBtn);
 
     textFieldList = new ArrayList<>();
@@ -127,7 +144,10 @@ public class RegisterMemberUI extends JFrame {
     textFieldList.add(phoneNumTextfield);
     textFieldList.add(addressTextField);
 
-    joinBtn.addActionListener(new RegisterEvent(textFieldList, this, loginFormUI));
+    int sex = 0;
+    if (radioButton2.isSelected()) sex = 1;
+
+    joinBtn.addActionListener(new RegisterEvent(textFieldList, 1, this, loginFormUI));
 
     for (JTextField jtf : textFieldList) {
       jtf.addKeyListener(new KeyAdapter() {
@@ -146,8 +166,8 @@ public class RegisterMemberUI extends JFrame {
 
   private void setUI() {
     setLayout(new BorderLayout());
-    getContentPane().setBackground(new Color(192, 220, 233));
     setSize(400, 710);
+    setBackground(ColorSet.BACKGROUND);
     setVisible(true);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(EXIT_ON_CLOSE);

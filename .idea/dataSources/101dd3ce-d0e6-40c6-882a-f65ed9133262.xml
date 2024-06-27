@@ -1219,7 +1219,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="509" parent="1" name="tspoon">
-      <LastIntrospectionLocalTimestamp>2024-06-26.07:57:22</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-06-27.01:33:33</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_general_ci</CollationName>
     </schema>
     <user id="510" parent="1" name="ttasjwi"/>
@@ -1256,7 +1256,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <CollationName>utf8mb4_general_ci</CollationName>
     </table>
     <column id="519" parent="511" name="BOARD_NO">
-      <AutoIncrement>63</AutoIncrement>
+      <AutoIncrement>69</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1389,7 +1389,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="546" parent="514" name="MYCLASS_NO">
-      <AutoIncrement>9</AutoIncrement>
+      <AutoIncrement>12</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1450,7 +1450,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="559" parent="515" name="LOG_NO">
-      <AutoIncrement>36</AutoIncrement>
+      <AutoIncrement>39</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1489,7 +1489,7 @@ tspoon|schema||ttasjwi||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="567" parent="516" name="REPLY_NO">
-      <AutoIncrement>19</AutoIncrement>
+      <AutoIncrement>26</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

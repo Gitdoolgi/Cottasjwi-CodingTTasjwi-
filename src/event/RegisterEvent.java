@@ -17,9 +17,11 @@ public class RegisterEvent implements ActionListener {
   private RegisterMemberUI registerMemberUI;
 
   private LoginFormUI loginFormUI;
+  private int radioBtnValue;
 
-  public RegisterEvent(List<JTextField> textFieldList, RegisterMemberUI registerMemberUI, LoginFormUI loginFormUI) {
+  public RegisterEvent(List<JTextField> textFieldList, int radioBtnValue, RegisterMemberUI registerMemberUI, LoginFormUI loginFormUI) {
     this.textFieldList = textFieldList;
+    this.radioBtnValue = radioBtnValue;
     this.memberRepository = new MemberRepository();
     this.registerMemberUI = registerMemberUI;
     this.loginFormUI = loginFormUI;
@@ -27,6 +29,7 @@ public class RegisterEvent implements ActionListener {
 
   @Override
   public void actionPerformed(ActionEvent e) {
+    System.out.println("회원가입 호출");
     String idValue = textFieldList.get(0).getText();
     String passwordValue = textFieldList.get(1).getText();
     String passwordCheckValue = textFieldList.get(2).getText();
@@ -42,14 +45,12 @@ public class RegisterEvent implements ActionListener {
       }
     }
 
-    // 성공했을 때
-
     if (!passwordValue.equals(passwordCheckValue)) {
       JOptionPane.showMessageDialog(null, "비밀번호가 맞지 않습니다.", "비밀번호확인", JOptionPane.ERROR_MESSAGE);
       return;
     }
 
-    int result = memberRepository.insertMember(new InsertMember(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null));
+    int result = memberRepository.insertMember(new InsertMember(idValue, passwordValue, nameValue, phoneNumValue, addressValue, null, radioBtnValue));
     if (result == 0) {
       JOptionPane.showMessageDialog(null, "아이디를 변경해주세요.", "아이디변경", JOptionPane.ERROR_MESSAGE);
       return;

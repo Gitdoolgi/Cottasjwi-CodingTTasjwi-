@@ -10,14 +10,17 @@ public class InsertMember {
   private String phone_num;
   private String address;
   private Date join_date;
+  private int sex;
+  private int role;
 
-  public InsertMember(String id, String password, String name, String phone_num, String address, Date join_date) {
+  public InsertMember(String id, String password, String name, String phone_num, String address, Date join_date, int sex) {
     this.id = id;
     this.password = password;
     this.name = name;
     this.phone_num = phone_num;
     this.address = address;
     this.join_date = join_date;
+    this.sex = sex;
   }
 
   public String getId() {
@@ -40,7 +43,7 @@ public class InsertMember {
     return address;
   }
 
-  public Date getJoinDate() {
-    return join_date;
+  public int getSex() {
+    return sex;
   }
 }

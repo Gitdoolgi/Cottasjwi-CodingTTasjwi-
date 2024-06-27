@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6dfbbda-17c0-43a3-8693-361c36a3e3a8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/101dd3ce-d0e6-40c6-882a-f65ed9133262.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BOARD_TEST.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WRITE_BOARD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WRITE_PANEL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/BoardEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/BoardEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/event/HeaderEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/HeaderEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/BoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/BoardRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/StatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/StatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/BoardUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/BoardUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/DefaultHeaderUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/LoginFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/LoginFormUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/MainFormUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/MainFormUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/StatusUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/StatusUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/WriteUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/WriteUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/InsertMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/InsertMember.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/event/RegisterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/event/RegisterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/RegisterMemberUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +115,7 @@
       <workItem from="1719363343304" duration="24702000" />
       <workItem from="1719394990641" duration="7223000" />
       <workItem from="1719446044122" duration="909000" />
-      <workItem from="1719447287013" duration="2663000" />
+      <workItem from="1719447287013" duration="4766000" />
     </task>
     <servers />
   </component>
