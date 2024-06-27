@@ -51,7 +51,7 @@ public class StatusRepository {
       sql += " and x.myclass_yn =0"
               + " and x.complete =0";
     } else if (idx == 1) {
-      sql += " and x.myclass_yn =1";
+      sql += " and x.complete =1";
     }
     if ("국어".equals(sub)) {
       sql += " and x.subject ='국어'";

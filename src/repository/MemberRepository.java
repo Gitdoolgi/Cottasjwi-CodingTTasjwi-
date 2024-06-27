@@ -4,6 +4,7 @@ import dbutil.MariaConnection;
 import domain.InsertMember;
 import domain.SelectMember;
 import domain.dto.SelectMilktMember;
+import domain.dto.UpdateMember;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
@@ -129,32 +131,43 @@ public class MemberRepository {
   }
 
 
-  public int updateMember(String tspoonId, String getPassword, String getPhoneNum, String getAddress) {
+  public int updateMember(UpdateMember updateMember) {
     PreparedStatement pstmt = null;
     int result = 0;
     StringBuilder sql = new StringBuilder();
     sql.append("update tspoon_member set ");
 
-    if (!getPassword.isBlank()) {
+    String updatePassword = updateMember.getPassword();
+    String updatePhoneNum = updateMember.getPhoneNum();
+    String updateAddress = updateMember.getAddress();
+
+    if (!updatePassword.isBlank()) {
       sql.append("PASSWORD = \'");
-      sql.append(getPassword);
-      sql.append("\', ");
+      sql.append(updatePassword);
+      sql.append("\'");
+      if (!updatePhoneNum.isBlank()) sql.append(",  ");
     }
 
-    if (!getPhoneNum.isBlank()) {
+
+    if (!updatePhoneNum.isBlank()) {
       sql.append("PHONE_NUM = \'");
-      sql.append(getPhoneNum);
-      sql.append("\', ");
+      sql.append(updatePhoneNum);
+      sql.append("\'");
+      if (!updateAddress.isBlank()) sql.append(",  ");
     }
 
-    if (!getAddress.isBlank()) {
+
+    if (!updateAddress.isBlank()) {
       sql.append("ADDRESS = \'");
-      sql.append(getAddress);
+      sql.append(updateAddress);
+      sql.append("\' ");
     }
 
-    sql.append("\' where ID = \'");
-    sql.append(tspoonId);
+    sql.append("where ID = \'");
+    sql.append(updateMember.getId());
     sql.append("\'");
+
+    System.out.println("update query > " + sql.toString());
     try {
       pstmt = con.prepareStatement(sql.toString());
       result = pstmt.executeUpdate();
@@ -166,5 +179,15 @@ public class MemberRepository {
       se.printStackTrace();
     }
     return result;
+  }
+
+  private int getComma(UpdateMember updateMember) {
+    int i = 0;
+
+    if (updateMember.getPassword().isBlank()) i++;
+    if (updateMember.getPhoneNum().isBlank()) i++;
+    if (updateMember.getAddress().isBlank()) i++;
+
+    return i;
   }
 }

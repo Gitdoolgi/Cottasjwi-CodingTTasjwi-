@@ -42,7 +42,7 @@ public class MemberInfoEvent implements ActionListener {
               System.out.println("자녀를 찾았습니다");
               //추가 작업 (MILKMEMBER 테이블에 부모의 ID 입력)
               try (PreparedStatement pstmt2 = con.prepareStatement(sql2)) {
-                pstmt2.setInt(1, 1);
+                pstmt2.setInt(1, member.getTspoonNo());
                 pstmt2.setString(2, userInput);
                 int rowsInserted = pstmt2.executeUpdate();
                 if (rowsInserted > 0) {

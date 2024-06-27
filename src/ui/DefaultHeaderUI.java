@@ -35,9 +35,9 @@ public class DefaultHeaderUI extends JPanel {
     backImageBtn.addMouseListener(new BackEvent(currentObj, previousObj, member));
 
     JLabel centerLabel = new JLabel();
-    ImageIcon logo = imageSetSize("icon/logo1.png", 50, 50);
+    ImageIcon logo = imageSetSize("icon/logospoonD.png", 50, 50);
     centerLabel.setIcon(logo);
-    centerLabel.setBounds(173, 0, 55, 65);
+    centerLabel.setBounds(170, 4, 55, 65);
 
     if (status.equals("first")) {
       add(centerLabel);

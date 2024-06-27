@@ -48,6 +48,14 @@ public class SelectMember {
     this.milktId = milktId;
   }
 
+  public void setPhoneNum(String phoneNum) {
+    this.phoneNum = phoneNum;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
   public String getMilktId() {
     return milktId;
   }

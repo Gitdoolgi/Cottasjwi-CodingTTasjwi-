@@ -8,7 +8,7 @@ public class MariaConnection {
   private static final Logger logger = Logger.getLogger(MariaConnection.class.getName());
   private static MariaConnection instance;
   private Connection con;
-  private String url = "jdbc:mariadb://localhost:3306/tspoon";
+  private String url = "jdbc:mariadb://10.41.2.94:3306/tspoon";
   private String username = "ttasjwi";
   private String password = "ttasjwi";
 

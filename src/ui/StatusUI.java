@@ -124,7 +124,7 @@ public class StatusUI extends JFrame {
     pane2.add(sp2, BorderLayout.CENTER);
 
     tab.addTab("       수강중       ", pane);
-    tab.addTab("  수강 완료 / 취소  ", pane2);
+    tab.addTab("      수강 완료     ", pane2);
 
     cp.add(tab);
 
@@ -165,7 +165,6 @@ public class StatusUI extends JFrame {
       label1.setForeground(Color.gray);
       label5.setForeground(color4);
       label6.setForeground(color5);
-      label2.setFont(new Font("Serif", Font.BOLD, 13));
       btn.setBounds(10, 10, 10, 10);
 
       pb.add(label1);

@@ -2,6 +2,7 @@ package ui;
 
 import domain.SelectMember;
 import event.MemberInfoEvent;
+import repository.StatusRepository;
 import style.ColorSet;
 
 import java.awt.*;
@@ -15,10 +16,12 @@ import javax.swing.*;
 
 public class MemberInfoUI extends JFrame {
   private DefaultHeaderUI defaultHeader;
+  private StatusRepository statusRepository;
   private SelectMember member;
 
   public MemberInfoUI(SelectMember member) {
     this.member = member;
+    statusRepository = new StatusRepository();
     init();
   }
 
@@ -78,7 +81,8 @@ public class MemberInfoUI extends JFrame {
     //label_C_ID.setForeground(ColorSet.BACKGROUND);
 
     label_C_ID1 = new JLabel();
-    label_C_ID1.setText(member.getMilktId());
+    String childName = statusRepository.findChildName(member.getTspoonNo());
+    label_C_ID1.setText(childName);
 
     cp.setBackground(ColorSet.BACKGROUND);
     cp.setLayout(new GridBagLayout());

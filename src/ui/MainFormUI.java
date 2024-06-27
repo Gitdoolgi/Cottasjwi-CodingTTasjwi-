@@ -25,10 +25,6 @@ public class MainFormUI extends JFrame {
     init();
   }
 
-  public static LoginFormUI getLoginForm() {
-    return loginForm;
-  }
-
   //UI
   void init() {
     Container cp = getContentPane();
