@@ -9,12 +9,10 @@ import java.awt.event.MouseEvent;
 public class BackEvent extends MouseAdapter {
   private Object currentObj;
   private Object previousObj;
-  private SelectMember member;
 
-  public BackEvent(Object currentObj, Object previousObj, SelectMember member) {
+  public BackEvent(Object currentObj, Object previousObj) {
     this.currentObj = currentObj;
     this.previousObj = previousObj;
-    this.member = member;
   }
 
   @Override

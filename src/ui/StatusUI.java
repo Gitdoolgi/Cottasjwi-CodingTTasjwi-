@@ -145,8 +145,8 @@ public class StatusUI extends JFrame {
 
     for (Study s : studies) {
       pb = new JPanel(new GridLayout(4, 2)); //수강 한 묶음
-      label1 = new JLabel(s.getTeacher() + " 선생님");
-      label2 = new JLabel(s.getGrade() + " " + s.getCname());
+      label2 = new JLabel(s.getTeacher() + " 선생님");
+      label1 = new JLabel(s.getGrade() + " " + s.getCname());
       label3 = new JLabel("총 " + s.getCcnt() + "강 중 " + s.getMcnt() + "강 달성(" + s.getProgress() + "%)");
       label4 = new JLabel(" ");
       label5 = new JLabel("학습 시작일 " + s.getSdate());
@@ -162,7 +162,7 @@ public class StatusUI extends JFrame {
       label1.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       label3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       label5.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-      label1.setForeground(Color.gray);
+      label2.setForeground(Color.gray);
       label5.setForeground(color4);
       label6.setForeground(color5);
       btn.setBounds(10, 10, 10, 10);
@@ -195,8 +195,8 @@ public class StatusUI extends JFrame {
 
     for (Study s : studies) {
       pd = new JPanel(new GridLayout(4, 2)); //수강 한 묶음
-      label8 = new JLabel(s.getTeacher() + " 선생님");
-      label9 = new JLabel(s.getGrade() + " " + s.getCname());
+      label9 = new JLabel(s.getTeacher() + " 선생님");
+      label8 = new JLabel(s.getGrade() + " " + s.getCname());
       label10 = new JLabel("총 " + s.getCcnt() + "강 중 " + s.getMcnt() + "강 달성(" + s.getProgress() + "%)");
       label11 = new JLabel(" ");
       label12 = new JLabel("학습 시작일 " + s.getSdate());
@@ -214,7 +214,7 @@ public class StatusUI extends JFrame {
       pd.add(label13);
       p2.add(pd);
 
-      label8.setForeground(Color.gray);
+      label9.setForeground(Color.gray);
       label12.setForeground(color4);
       label13.setForeground(color5);
       pc.setBackground(color2);

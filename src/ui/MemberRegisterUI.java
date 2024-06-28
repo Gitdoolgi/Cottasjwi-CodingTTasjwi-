@@ -15,9 +15,9 @@ import java.util.List;
 public class MemberRegisterUI extends JFrame {
   private List<JTextField> textFieldList;
   private JTextField idTextFiedl;
-  private JTextField passwordTextField;
+  private JPasswordField passwordTextField;
+  private JPasswordField passwordCheckTextField;
   private JTextField nameTextField;
-  private JTextField passwordCheckTextField;
   private JTextField addressTextField;
   private JTextField phoneNumTextfield;
   private DefaultHeaderUI defaultHeaderUI;
@@ -57,7 +57,7 @@ public class MemberRegisterUI extends JFrame {
     passwordLabel.setBounds(20, 120, 85, 45);
     joinPanel.add(passwordLabel);
 
-    passwordTextField = new JTextField();
+    passwordTextField = new JPasswordField();
     passwordTextField.setColumns(10);
     passwordTextField.setBounds(113, 120, 242, 45);
     joinPanel.add(passwordTextField);
@@ -68,7 +68,7 @@ public class MemberRegisterUI extends JFrame {
     passworCheckdLabel.setBounds(20, 180, 85, 45);
     joinPanel.add(passworCheckdLabel);
 
-    passwordCheckTextField = new JTextField();
+    passwordCheckTextField = new JPasswordField();
     passwordCheckTextField.setColumns(10);
     passwordCheckTextField.setBounds(113, 180, 242, 45);
     joinPanel.add(passwordCheckTextField);

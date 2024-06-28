@@ -36,6 +36,7 @@ public class LoginFormUI extends JFrame {
     UIManager.put("TextField.font", new Font("KCC-간판체", Font.PLAIN, 12));
     UIManager.put("TextArea.font", new Font("KCC-간판체", Font.PLAIN, 12));
     UIManager.put("TableHeader.font", new Font("KCC-간판체", Font.PLAIN, 12));
+    UIManager.put("TableHeader.font", new Font("KCC-간판체", Font.PLAIN, 12));
 
     // 헤더
     memberRepository = new MemberRepository();

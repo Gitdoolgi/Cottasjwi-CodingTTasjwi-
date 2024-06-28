@@ -31,7 +31,7 @@ public class DefaultHeaderUI extends JPanel {
     ImageIcon imageIcon = imageSetSize("icon/back2.png", 25, 25);
     backImageBtn.setIcon(imageIcon);
     backImageBtn.setBounds(25, 23, 25, 25);
-    backImageBtn.addMouseListener(new BackEvent(currentObj, previousObj, member));
+    backImageBtn.addMouseListener(new BackEvent(currentObj, previousObj));
 
     JLabel centerLabel = new JLabel();
     ImageIcon logo = imageSetSize("icon/logospoonD.png", 50, 50);

@@ -98,7 +98,7 @@ public class MemberRepository {
       pstmt.setInt(6, insertMember.getSex());
 
       result = pstmt.executeUpdate();
-      con.commit();
+      if (result > 0) con.commit();
     } catch (SQLException e) {
       e.printStackTrace();
       System.out.println("아이디 중복");

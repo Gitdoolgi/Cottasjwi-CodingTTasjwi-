@@ -21,13 +21,13 @@ public class BoardRepository {
 
     List<Object[]> li = new ArrayList<>();
 
-    String sql = "select board_no,title,article,id,board_date from board join tspoon_member using(tspoon_no) where article like '%" + title + "%' and board_yn = 0 order by board_no desc";
+    String sql = "select board_no,title,id,board_date from board join tspoon_member using(tspoon_no) where article like '%" + title + "%' and board_yn = 0 order by board_no desc";
 
     try {
       pstmt = con.prepareStatement(sql);
       rs = pstmt.executeQuery();
       while (rs.next()) {
-        li.add(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("ARTICLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
+        li.add(new Object[]{rs.getInt("BOARD_NO"), rs.getString("TITLE"), rs.getString("id"), rs.getDate("BOARD_DATE")});
       }
 
     } catch (SQLException se) {

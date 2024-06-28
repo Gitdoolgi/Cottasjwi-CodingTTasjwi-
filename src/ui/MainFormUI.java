@@ -5,6 +5,7 @@ import event.MainEvent;
 import style.ColorSet;
 
 import java.awt.*;
+import java.time.LocalDate;
 import javax.swing.*;
 
 public class MainFormUI extends JFrame {
@@ -14,6 +15,8 @@ public class MainFormUI extends JFrame {
   private static final JButton classButton = new JButton("학습현황");
 
   private static final JLabel adLabel = new JLabel();
+  private static final JLabel profileLabel = new JLabel();
+
 
   private SelectMember userInformation;
   private DefaultHeaderUI defaultHeader;
@@ -34,6 +37,15 @@ public class MainFormUI extends JFrame {
     defaultHeader = new DefaultHeaderUI("login-main", this, loginForm, userInformation);
     add(defaultHeader);
 
+    //프로필
+    if (userInformation.getSex() == 0) { //남자
+      profileLabel.setIcon(null);
+    } else { //여자
+      profileLabel.setIcon(null);
+    }
+    cp.add(profileLabel);
+    profileLabel.setBounds(0, 100, 200, 200);
+
     cp.add(boardButton); //게시판 버튼
     boardButton.setBounds(40, 500, 150, 50);
     boardButton.addMouseListener(new MainEvent(this, loginForm, userInformation));
@@ -43,7 +55,6 @@ public class MainFormUI extends JFrame {
     classButton.setBounds(200, 500, 150, 50);
     classButton.addActionListener(e -> {
       if (userInformation.getMilktId() != null) {
-        setVisible(false);
         new StatusUI(this, userInformation);
       } else {
         JOptionPane.showMessageDialog(null, "자식을 등록해주세요");

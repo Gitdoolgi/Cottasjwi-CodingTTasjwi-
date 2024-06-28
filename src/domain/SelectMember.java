@@ -10,6 +10,7 @@ public class SelectMember {
   private String address;
   private Date joinDate;
   private String milktId;
+  private int sex;
 
   public SelectMember(int tspoonNo, String id, String name, String phoneNum, String address, Date joinDate) {
     this.tspoonNo = tspoonNo;
@@ -42,6 +43,10 @@ public class SelectMember {
 
   public Date getJoinDate() {
     return joinDate;
+  }
+
+  public int getSex() {
+    return sex;
   }
 
   public void setMilktId(String milktId) {
